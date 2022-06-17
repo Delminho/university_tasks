@@ -1,0 +1,284 @@
+\documentclass[12 pt]{article}
+\usepackage[utf8]{inputenc} 
+\usepackage[english, ukrainian]{babel}
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{mathabx}
+\usepackage{cancel}
+\geometry{verbose,a4paper,tmargin=2cm,bmargin=2cm,lmargin=1cm,rmargin=1cm}
+\linespread{1.25}
+
+\begin{document}
+\begin{center}
+    \Large
+    Романович Володимир КА-02 \\
+    Самостійна робота №1 \\ 
+    Варіант 9
+\end{center}
+\begin{center}
+    \large 
+    Завдання 1 (Чудесенко 21.9)
+\end{center}
+Функцію f(t) можемо записати як $$
+f(t) = -\eta(t) + \frac{t}{a} \eta(t) +
+\eta(t-a) - 2 \frac{t-a}{a} \eta(t-a) + \frac{t-2a}{a} \eta(t-2a)
+$$
+де $\eta(x) = 
+\begin{cases}
+    0, & x < 0,\\
+    1, & x \geq 0
+    \end{cases}$,
+використовуючи властивості лінійності та запізнення отримуємо:\\ 
+$$
+f(t) \risingdotseq  -\frac{1}{p} + \frac{1}{p^2 a} +
+ e^{-a}\left(\frac{1}{p} - \frac{2}{p^2 a}\right) + e^{-2a} \frac{1}{p^2 a} =
+ \frac{(e^{-a} - 1)(pa+e^{-a}-1)}{p^2 a}
+$$
+Відповідь: $F(p) = \mathcal{L} \{ f(t) \} = \frac{(e^{-a} - 1)(pa+e^{-a}-1)}{p^2 a}$ 
+\begin{center}
+    \large 
+    Завдання 2 (Чудесенко 22.9)
+\end{center}
+$F(p) = \frac{1}{p^5+p^3} = \frac{1}{p^3(p^2+1)}$, використовуючи метод
+невизначених коефіцієнтів розкладемо цей вираз:
+$$ 
+\frac{A}{p} + \frac{B}{p^2} + \frac{C}{p^3} + \frac{Ep + D}{p^2+1} =
+\frac{1}{p^3(p^2+1)}
+\implies 
+\frac{A(p^2+1)p^2 + B(p^2+1)p + C(p^2+1)+E p^4 + D p^3}{p^3(p^2+1)} 
+= \frac{1}{p^3(p^2+1)}
+$$ 
+$$
+\implies
+p^4(A+E) + p^3(B+D) + p^2(A+C) + p\cdot B + C = 1
+\implies
+$$
+$$ \implies
+\begin{cases}
+    A+E = 0 \\
+    B+D = 0 \\ 
+    A+C = 0 \\ 
+    B = 0 \\ 
+    C = 1
+\end{cases}
+\implies
+\begin{cases}
+    A = -1 \\ 
+    B = 0 \\ 
+    C = 1 \\
+    D = 0 \\ 
+    E = 1
+\end{cases}
+$$
+Отже $F(p) = -\frac{1}{p} + \frac{1}{p^3} + \frac{p}{p^2 + 1}$. Ми знаємо, що
+$-\frac{1}{p}\fallingdotseq - \eta(t), \ \ 
+\frac{1}{p^3} \fallingdotseq \frac{1}{2}t^2 \eta(t), \ \ 
+\frac{p}{p^2+1} \fallingdotseq \cos(t) \eta(t)$, з лінійності:
+$$
+F(p) \fallingdotseq - \eta(t) + \frac{1}{2}t^2 \eta(t) +\cos(t) \eta(t) = 
+\eta(t) \cdot (-1 + 0.5 t^2 + \cos{t})
+$$
+Відповідь: Оригінал f(t) даного зображення має вигляд:
+ $f(t) = \eta(t) \cdot (-1 + 0.5 t^2 + \cos{t})$
+ 
+
+ \begin{center}
+    \large 
+    Завдання 3 (Чудесенко 24.9)
+\end{center}
+$\begin{cases}
+    2y''-y'= \sin{3t} \\ 
+    y(0) = 2, y'(0) = 1
+\end{cases}$ \\ 
+Нехай $y(t) \risingdotseq Y(p)$, тоді з властивості диференціювання оригіналу: \\
+$y'(t) \risingdotseq pY(p) - y(0) = pY(p) - 2, \ \ 
+y''(t) = p^2Y(p) - py(0) - y'(0) = p^2Y(p) - 2p - 1, \ \ 
+\sin3t \risingdotseq \frac{3}{p^2 + 9}$, отримуємо рівняння: \\ 
+$$
+2(p^2Y(p)-2p-1) - (pY(p) - 2) = \frac{3}{p^2 + 9}
+\implies 
+2p^2Y(p) - p Y(p) -4p = \frac{3}{p^2 + 9}
+\implies$$ 
+$$ 
+Y(p) = \frac{3}{p(p^2+9)(2p-1)} + \frac{4\bcancel{p}}{\bcancel{p}(2p-1)}
+$$ 
+Розкладемо перший дріб методом невизначених коефіцієнтів: \\ 
+$$
+\frac{A}{p} + \frac{Bp+C}{p^2+9} + \frac{D}{2p-1} = \frac{3}{p(p^2+9)(2p-1)}
+\implies $$
+$$ \implies
+A(2p-1)(p^2+9) + (Bp+C)(2p-1)p + D(p^2+9)p = 3 \implies$$
+$$ \implies
+A(2p^3-p^2+18p-9) + B(2p^3-p^2) + C(2p^2-p) + D(p^3+9p) = 3 \implies
+$$
+$$
+\implies
+p^3(2A + 2B + D) + p^2(-A - B + 2C) + p(18A - C + 9D) -9A = 3 \implies
+$$
+$$ \implies
+\begin{cases}
+    2A+2B+D = 0 \\ 
+    -A - B + 2C = 0 \\ 
+    18A - C + 9 D = 0 \\ 
+    -9 A = 3
+\end{cases}
+\implies
+\begin{cases}
+    2B+D = \frac{2}{3} \\ 
+    - B + 2C = -\frac{1}{3} \\ 
+    - C + 9 D = 6 \\ 
+    A = -\frac{1}{3}
+\end{cases}
+\implies
+\begin{cases}
+    A = -\frac{1}{3} \\ 
+    B = \frac{1}{111} \\ 
+    C = -\frac{6}{37} \\ 
+    D = \frac{24}{37}
+\end{cases}
+$$
+Отже,
+$$
+Y(p) = -\frac{1}{3} \cdot  \frac{1}{p}
++ \frac{1}{111} \cdot \frac{p}{p^2+9}
+-\frac{6}{37} \cdot \frac{1}{p^2+9}
++ \frac{86}{37} \cdot \frac{1}{p-\frac{1}{2}}
+$$
+З таблиці зрозуміло, що:
+$$
+-\frac{1}{3}p \fallingdotseq  -\frac{1}{3}, \ \ \ 
+\frac{1}{111} \cdot  \frac{p}{p^2+9} \fallingdotseq \frac{1}{111} \cos{3t}, \ \ \ 
+-\frac{2}{37} \cdot \frac{3}{p^2+9} \fallingdotseq -\frac{2}{37} \sin{3t}, \ \ \ 
+\frac{86}{37} \cdot \frac{1}{p-\frac{1}{2}} \fallingdotseq \frac{86}{37} e^{\frac{1}{2}t}
+$$
+Тож отримуємо розв'язок:\\ 
+$$Y(p) \fallingdotseq y(t) = 
+-\frac{1}{3} + \frac{1}{111} \cos{3t} - \frac{2}{37} \sin{3t} +
+ \frac{86}{37} e^{\frac{1}{2}t}$$
+\\Відповідь: $y(t)= 
+-\frac{1}{3} + \frac{1}{111} \cos{3t} - \frac{2}{37} \sin{3t} +
+ \frac{86}{37} e^{0.5t}$ 
+
+ \begin{center}
+    \large 
+    Завдання 4 (Чудесенко 26.9)
+\end{center}
+$\begin{cases}
+    x'=-2x+6y+1 \\ 
+    y' = 2x + 2 \\ 
+    x(0) = 0, \ y(0) = 1
+\end{cases}$ \\ \\ 
+Нехай $x(t) \risingdotseq X(p) , \ \ y(t) \risingdotseq Y(p)$, тоді
+$x'(t) \risingdotseq  pX(p) - x(0) = pX(p), \ \ y'(t) = pY(p) - y(0) = pY(p)-1$  \\ 
+Маємо 
+$$\begin{cases}
+    pX(p)+2X(p)-6Y(p) = \frac{1}{p} \\ 
+    pY(p) - 1 - 2 X(p) = \frac{2}{p} \\ 
+\end{cases}
+\implies
+\begin{cases}
+    (p+2)X(p)-6Y(p) = \frac{1}{p} \\ 
+    -2 X(p) + pY(p) = \frac{p+2}{p} \\ 
+\end{cases}
+$$
+Розв'яжемо цю систему методом Крамера: \\ 
+$\Delta= \det \begin{vmatrix}
+    p+2 & -6 \\ 
+    -2 & p
+\end{vmatrix}= p^2 + 2p -12$  \\ 
+$\Delta_X= \det \begin{vmatrix}
+    \frac{1}{p} & -6 \\ 
+    \frac{p+2}{p} & p
+\end{vmatrix}= 1 +  \frac{6(p+2)}{p} = \frac{7p+12}{p}$ \\  
+$\Delta_Y= \det \begin{vmatrix}
+    p+2 & \frac{1}{p} \\ 
+    -2 & \frac{p+2}{p}
+\end{vmatrix}= \frac{2}{p} +  \frac{(p+2)^2}{p} = \frac{p^2+4p+6}{p}$ \\ 
+$$
+X(p) = \frac{\Delta_X}{\Delta} = 
+\frac{7p+12}{p(p^2+2p-12)}. \ \ \ \ 
+Y(p) = \frac{\Delta_Y}{\Delta} = 
+\frac{(p^2 + 4p +6)}{p(p^2+2p-12)}.
+$$
+Розкладемо на елементарні дроби:
+$$
+\begin{cases}
+    X(p): \  \frac{A_1 }{p} + \frac{B_1 p+C_1 }{p^2+2p-12}
+     = \frac{7p+12}{p(p^2+2p-12)} \\ 
+    Y(p): \  \frac{A_2 }{p} + \frac{B_2 p+C_2 }{p^2+2p-12} = \frac{p^2+4p+6}{p(p^2+2p-12)}
+\end{cases} \implies
+\begin{cases}
+    X(p): \  A_1 (p^2+2p-12) + B_1 p^2 + C_1 p = 7p+12 \\ 
+    Y(p): \ A_2 (p^2+2p-12) + B_2 p^2 + C_2 p = p^2+4p+6
+\end{cases} \implies
+$$
+$$
+\begin{cases}
+    p^2(A_1 +B_1 ) + p(2A_1 +C_1 ) -12A_1  = 7p+12 \\ 
+    p^2(A_2 +B_2 ) + p(2A_2 +C_2 ) -12A_2  = p^2+4p+6
+\end{cases}
+\implies
+\begin{cases}
+    \begin{cases}
+        A_1 +B_1 =0 \\ 
+        2A_1 +C_1 =7 \\ 
+        -12A_1  = 12
+    \end{cases} \\ 
+    \begin{cases}
+        A_2 +B_2  = 1 \\ 
+        2A_2  + C_2  = 4 \\ 
+        -12 A_2  = 6
+    \end{cases}
+\end{cases}
+\implies
+\begin{cases}
+    \begin{cases}
+        A_1  = -1 \\
+        B_1 = 1 \\ 
+        C_1 = 9 
+    \end{cases} \\ 
+    \begin{cases}
+        A_2  = -\frac{1}{2}\\
+        B_2  = \frac{3}{2} \\ 
+        C_2  = 5         
+    \end{cases}
+\end{cases}
+$$
+Отримали що $$
+\begin{cases}
+    X(p) = -\frac{1}{p} + \frac{p+9}{(p+1)^2-13} \\ 
+    Y(p) = \frac{1}{2}\left(-\frac{1}{p} + \frac{3p+10}{(p+1)^2-13}\right)
+\end{cases} \implies
+\begin{cases}
+    X(p) = -\frac{1}{p} + \frac{p+1}{(p+1)^2-13} + 
+    \frac{8}{ \sqrt{13} }  \cdot  \frac{ \sqrt{13} }{(p+1)^2-13}\\ 
+    Y(p) = \frac{1}{2}\left(-\frac{1}{p} + 3\frac{p+1}{(p+1)^2-13} + 
+    \frac{7}{ \sqrt{13} } \cdot \frac{ \sqrt{13} }{(p+1)^2-13} \right)
+\end{cases}
+$$
+З таблиці відомо, що $\frac{1}{p} \fallingdotseq 1, \ \ \ 
+\frac{p+1}{(p+1)^2-13} \fallingdotseq e^{-t} \cdot \ch{\left(\sqrt{13} t\right)}, \ \ \ 
+\frac{ \sqrt{13} }{(p+1)^2-13} \fallingdotseq e^{-t} \cdot \sh{\left(\sqrt{13}t \right)}$. \\ 
+Звідси отримуємо: 
+$$\begin{cases}
+    X(p)\fallingdotseq x(t) =
+ -1 + e^{-t} \cdot \ch{\left(\sqrt{13} t\right)} + \frac{8}{ \sqrt{13}} 
+ e^{-t} \cdot \sh{\left(\sqrt{13}t \right)} \\ 
+ Y(p) \fallingdotseq y(t) = \frac{1}{2} \left( 
+     -1 + 3e^{-t} \cdot \ch{\left(\sqrt{13} t\right)} 
+     + \frac{7}{ \sqrt{13} }e^{-t} \cdot \sh{\left(\sqrt{13}t \right)}
+ \right)
+\end{cases}
+$$
+Відповідь: $
+\begin{cases}
+    x(t) =
+ -1 + e^{-t}\left( \ch{\left(\sqrt{13} t\right)} + \frac{8}{ \sqrt{13}} 
+ \sh{\left(\sqrt{13}t \right)}\right) \\ 
+ y(t) = \frac{1}{2} \left( 
+     -1 + e^{-t} \left(3\ch{\left(\sqrt{13} t\right)} 
+     + \frac{7}{ \sqrt{13} }\sh{\left(\sqrt{13}t \right)}
+ \right)\right)
+\end{cases}
+$ 
+\end{document}
