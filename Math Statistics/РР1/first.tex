@@ -1,0 +1,1158 @@
+\documentclass[11 pt]{article}
+\usepackage[utf8]{inputenc} 
+\usepackage[T1,T2A]{fontenc}
+\usepackage[english, ukrainian]{babel}
+\usepackage[center]{titlesec}
+\usepackage{amsmath, amsfonts}
+\usepackage{mathtools}
+\usepackage{marvosym}
+\usepackage{geometry}
+\geometry{verbose,a4paper,tmargin=2cm,bmargin=2cm,lmargin=1cm,rmargin=1.5cm}
+\usepackage{diagbox}
+\usepackage{hyperref}
+\usepackage{nicefrac}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{physics}
+\usepackage{relsize}
+\usepackage{textgreek}
+\usepackage{upgreek}
+\usepackage{adjustbox}
+
+
+
+\usepgfplotslibrary{fillbetween}
+\usepackage{float}
+\hypersetup{
+    colorlinks=true,
+    linkcolor = blue,
+}
+\DeclareMathOperator*{\argmax}{argmax} % thin space, limits underneath in displays
+\usepackage{tikz}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
+            
+
+
+\begin{document}
+
+
+
+\begin{titlepage}
+    \begin{center}
+        \vspace*{1cm}
+            
+        \Huge
+        \textbf{Розрахункова робота № 1}
+            
+        \vspace{0.5cm}
+        \LARGE
+        з Математичної Статистики
+            
+        \vspace{1.5cm}
+            
+        %\textbf{Романовича Володимира}
+            
+        \vfill
+        студента КА-02\\
+        Романовича Володимира \\ 
+        Варіант 9
+        \vspace{0.8cm}
+            
+        \includegraphics[width=55mm]{vecteezy_goose-outline-icon-animal-vector_.jpg}
+            
+        \Large
+        Київ 2022
+            
+    \end{center}
+\end{titlepage}
+
+\begin{center}
+    \large
+    \textbf{Завдання розрахункової роботи}
+\end{center}
+1. Побудувати варіаційний (дискретний або інтервальний) ряд наданої вибірки.\\
+2. Зробити графічне зображення вибірки.\\
+3. Побудувати емпіричну функцію розподілу.\\
+4. Знайти незміщену оцінку математичного сподівання та дисперсії.\\
+5. Обчислити значення вибіркової медіани, моди, асиметрії.\\
+6. Висунути гіпотезу про розподіл, за яким отримано вибірку.\\
+7. Знайти точкові оцінки параметрів гіпотетичного закону розподілу та перевірити їх
+властивості.\\
+8. Перевірити за допомогою критерію
+значущості
+(Пірсона) гіпотезу про розподіл з рівнем
+$\alpha$ = 0,05.\\
+9. Знайти довірчий інтервал для параметрів гіпотетичного закону розподілу, взявши рівень
+надійності 0.95.\\
+10. Висновки.\\
+\\ 
+\textbf{Задана конкретна реалізація вибірки:} \\
+$\vec{x}=(5.04, 8.16, 4.32, 4.29, 4.26, 4.33, 6.17, 4.63, 4.28, 4.37, 7.74, 5.19, 4.19, 4.71, 5.29, 5.53, 5.32, 4.18, 4.47, 4.94,\\ 5.51, 4.66, 7.62, 4.23, 7.3, 5.95, 4.51, 5.46, 4.81, 4.27, 7.58, 5.9, 6.02, 5.72, 6.33, 5.12, 4.6, 4.51, 6.56, 5.55,\\ 5.48, 4.27, 4.99, 4.3, 5.84, 5.72, 5.02, 4.7, 7.4, 4.18, 5.35, 4.98, 5.58, 5.1, 5.18, 5.67, 4.95, 6.09, 5.01, 4.62, 4.47,\\ 7.54, 7.0, 4.83, 6.43, 4.52, 4.66, 5.69, 5.5, 5.24, 5.86, 4.27, 5.58, 4.73, 4.39, 4.19, 13.09, 4.22, 7.29, 9.24, 5.95,\\ 4.18, 6.15, 4.37, 6.16, 4.68, 6.46, 5.05, 4.65, 7.76, 5.12, 5.64, 5.52, 6.38, 5.44, 4.91, 7.84, 7.22, 4.2, 5.39
+)$\\ 
+\\
+Можемо побачити що у заданій нам реалізації вибірки майже всі значення унікальні, тому припустимо, що
+генеральна сукупність, за якою задано конкретну реалізацію вибірки, є неперервною випадковою величиною. 
+Тому доцільно буде використовувати інтервальний варіаційний ряд. \\ 
+\\
+
+\begin{center}
+    \large
+    \textbf{1. Побудувати інтервальний варіаційний ряд наданої вибірки}
+\end{center}
+Скористаємося правилом Стерджеса щоб знати на скільки інтервалів ділити відрізок $[x_{min}, x_{max}]$:\\ 
+$k = 1 + [3.322\lg{100}] = 7$, розмах вибірки $R=x_{max}-x_{min}=13.09-4.28=8.81$, тому поділимо
+відрізок [4.18, 13.09] на 7 рівних напівінтервалів довжиною $\frac{R}{k}=\frac{8.81}{7}\approx 1.2585$
+\\
+\begin{table}[h!]
+	\begin{center}
+		\caption{Інтеравальний варіаційний ряд конкретної реалізації вибірки з інтервалами рівної довжини}
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}\hline
+			Інтервал $\Delta_i$ & 
+            $[4.18; 5.45)$ & $[5.45; 6.73)$ & $[6.73; 8)$ & $[8; 9.27)$ & $[9.27; 10.54)$
+            & $[10.54;11.82)$ & $[11.82; 13.09]$   
+            \\ \hline
+			Частоти $n_i$ &$57$&$29$&$11$&$2$&$0$&$0$&$1$ \\ \hline
+			Частості $\omega_i$&$0.57$&$0.29$&$0.11$&$0.02$&$0$&$0$&$0.01$ \\ \hline
+		\end{tabular}
+	\end{center}
+\end{table}
+\\
+Можемо замітити що тільки 3 координати нашої реалізації вибірки потрапили в відрізок [8;13.09],
+при чому в півінтервал [9.27;11.82) не потрапило жодної координати. Тому я вважаю доцільним об'єднати
+останні 4 інтервали в один довжиною 5.09 та поділити півінтервал [4.18;8) вже на 6 рівних інтервалів
+довжиною приблизно 0.64. Побудуємо такий варіаційний ряд. Надалі використовуватимемо саме його\\
+\begin{table}[h!]
+	\begin{center}
+		\caption{Інтеравальний варіаційний ряд конкретної реалізації вибірки}
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}\hline
+			Інтервал $\Delta_i$ & 
+            $[4.18; 4.82)$ & $[4.82; 5.45)$ & $[5.45; 6.09)$ & $[6.09; 6.73)$ & $[6.73; 7.36)$
+            & $[7.36;8)$ & $[8; 13.09]$   
+            \\ \hline
+			Частоти $n_i$ &$36$&$21$&$20$&$9$&$4$&$7$&$3$ \\ \hline
+			Частості $\omega_i$&$0.36$&$0.21$&$0.20$&$0.09$&$0.04$&$0.07$&$0.03$ \\ \hline
+		\end{tabular}
+	\end{center}
+\end{table}
+
+\newpage
+\begin{center}
+    \large
+    \textbf{2. Зробити графічне зображення вибірки}
+\end{center}
+Графічним зображенням конкретної реалізації вибірки при неперервно розподіленій ГС є гістрограма, 
+що складається з прямокутників, побудованих на інтервалах $\Delta_i$ з висотами 
+$h_i = \frac{\omega_i}{l(\Delta_i)}$\\ 
+Додамо до таблиці значення цих висот $h_i$:
+\begin{table}[h!]
+	\begin{center}
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}\hline 
+            Інтервал $\Delta_i$ & 
+            $[4.18; 4.82)$ & $[4.82; 5.45)$ & $[5.45; 6.09)$ & $[6.09; 6.73)$ & $[6.73; 7.36)$
+            & $[7.36;8)$ & $[8; 13.09]$   
+            \\ \hline
+			Частоти $n_i$ &$36$&$21$&$20$&$9$&$4$&$7$&$3$ \\ \hline
+			Частості $\omega_i$&$0.36$&$0.21$&$0.20$&$0.09$&$0.04$&$0.07$&$0.03$ \\ \hline
+            Висоти $h_i$&$0.565$&$0.33$&$0.314$&$0.141$&$0.063$&$0.11$&$0.006$ \\ \hline
+		\end{tabular}
+	\end{center}
+\end{table}\\
+Побудуємо тепер гістограму, яка і буде геометричною інтерпретацією даної вибірки:
+\\
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}
+        
+		\draw[->] (-0.5,0) -- (14,0);
+		\draw[->] (0,-0.5) -- (0,10);
+
+        \draw (4.18,0) rectangle (4.82,9.04);
+        \draw (4.82,0) rectangle (5.45,5.28);
+        \draw (5.45,0) rectangle (6.09,5.024);
+        \draw (6.09,0) rectangle (6.73,2.256);
+        \draw (6.73,0) rectangle (7.36,1.008);
+        \draw (7.36,0) rectangle (8,1.76);
+        \draw (8,0) rectangle (13.09,0.096);
+        \draw (-0.1, 9.04) -- (0.1, 9.04) node[left] {0.565 \ };
+        \draw (-0.1, 5.28) -- (0.1, 5.28) node[left] {0.33 \ };
+        \draw (-0.1, 2.256) -- (0.1, 2.256) node[left] {0.141 \ };
+        \draw (-0.1, 1.008) -- (0.1, 1.008) node[left] {0.063 \ };
+        \draw (-0.1, 0.096) -- (0.1, 0.096);
+        \draw (0, 0.2) node[left] {0.006};
+        \draw (4.18, 0) node[below] {4.18};
+        \draw (5.45, 0) node[below] {5.45};
+        \draw (6.73, 0) node[below] {6.73};
+        \draw (8, 0) node[below] {8};
+        \draw (13.09, 0) node[below] {13.09};
+
+
+
+
+        %\draw (4.18,0) .. controls (5,4) and (4,0) .. (4,4);
+        %\draw (4,4) .. controls (4,8) and (4,9) .. (7,7);
+
+	\end{tikzpicture}
+    \caption{Гістограма конкретної реалізації вибірки}
+
+\end{figure}
+
+
+\newpage
+Також побудуємо емпіричну функцію розподілу нашої конкретної реалізації, та її графік
+\\ 
+$$
+\left(F^*_{n}\right)_{\text{зн}}(x) = 
+\begin{cases}
+    0, & x \le x_{min} \\
+    \omega_1^{\text{нак}}, & x \in (x_{min}; t_1 ] \\ 
+    \omega_2^{\text{нак}}, & x \in (t_1; t_2  ] \\ 
+    \omega_3^{\text{нак}}, & x \in (t_2 ; t_3 ] \\ 
+    \omega_4^{\text{нак}}, & x \in (t_3 ; t_4 ] \\ 
+    \omega_5^{\text{нак}}, & x \in (t_4; t_5 ] \\ 
+    \omega_6^{\text{нак}}, & x \in (t_5; t_6 ] \\ 
+    1, & x > t_6 
+\end{cases}
+=
+\begin{cases}
+    0, & x \le 4.18 \\
+    0.36, & x \in (4.18; 4.82 ] \\ 
+    0.36+0.21, & x \in (4.82; 5.45  ] \\ 
+    0.36+0.21+0.2, & x \in (5.45 ; 6.09 ] \\ 
+    0.36+0.21+0.2+0.09, & x \in (6.09 ; 6.73 ] \\ 
+    0.36+0.21+0.2+0.09+0.04, & x \in (6.73 ; 7.36 ] \\ 
+    0.36+0.21+0.2+0.09+0.04+0.07, & x \in (7.36; 8 ] \\  
+    1, & x > 8
+\end{cases}
+=
+$$
+$$
+=
+\begin{cases}
+    0, & x \le 4.18 \\
+    0.36, & x \in (4.18; 4.82 ] \\ 
+    0.57, & x \in (4.82; 5.45  ] \\ 
+    0.77, & x \in (5.45 ; 6.09 ] \\ 
+    0.86, & x \in (6.09 ; 6.73 ] \\ 
+    0.9, & x \in (6.73 ; 7.36 ] \\ 
+    0.97, & x \in (7.36; 8 ] \\  
+    1, & x > 8
+\end{cases}
+$$ \\
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}
+        
+		\draw[->] (-0.5,0) -- (17,0) node[below] {$x$};
+		\draw[->] (0,-0.5) -- (0,9) node[left] {$(F^*_{n})_{\text{зн}}(x)$};
+
+
+        \draw[ultra thick, black][<-] (16, 8) -- (17, 8);
+        \draw[dashed] (0, 8) -- (16, 8);
+        \draw[dashed] (16, 0) -- (16, 8);
+        \draw (16, 0) node[below] {\scriptsize 8};
+        \draw (0, 8) node[left] {\scriptsize 1};
+
+
+        \draw[ultra thick, black][<-] (14.72, 7.76) -- (16, 7.76);
+        \draw[dashed] (0, 7.76) -- (14.72, 7.76);
+        \draw[dashed] (14.72, 0) -- (14.72, 7.76);
+        \draw (14.72, 0) node[below] {\scriptsize 7.36};
+        \draw (0, 7.76) node[left] {\scriptsize 0.97};
+
+
+        \draw[ultra thick, black][<-] (13.46, 7.2) -- (14.72, 7.2);
+        \draw[dashed] (0, 7.2) -- (13.46, 7.2);
+        \draw[dashed] (13.46, 0) -- (13.46, 7.2);
+        \draw (13.46, 0) node[below] {\scriptsize 6.73};
+        \draw (0, 7.2) node[left] {\scriptsize 0.9};
+
+
+        \draw[ultra thick, black][<-] (12.18, 6.88) -- (13.46, 6.88);
+        \draw[dashed] (0, 6.88) -- (12.18, 6.88);
+        \draw[dashed] (12.18, 0) -- (12.18, 6.88);
+        \draw (12.18, 0) node[below] {\scriptsize 6.09};
+        \draw (0, 6.88) node[left] {\scriptsize 0.86};
+
+
+        \draw[ultra thick, black][<-] (10.9, 6.16) -- (12.18, 6.16);
+        \draw[dashed] (0, 6.16) -- (10.9, 6.16);
+        \draw[dashed] (10.9, 0) -- (10.9, 6.16);
+        \draw (10.9, 0) node[below] {\scriptsize 5.45};
+        \draw (0, 6.16) node[left] {\scriptsize 0.77};
+        
+        \draw[ultra thick, black][<-] (9.64, 4.56) -- (10.9, 4.56);
+        \draw[dashed] (0, 4.56) -- (9.64, 4.56);
+        \draw[dashed] (9.64, 0) -- (9.64, 4.56);
+        \draw (9.64, 0) node[below] {\scriptsize 4.82};
+        \draw (0, 4.56) node[left] {\scriptsize 0.57};
+
+        \draw[ultra thick, black][<-] (8.36, 2.88) -- (9.64, 2.88);
+        \draw[dashed] (0, 2.88) -- (8.36, 2.88);
+        \draw[dashed] (8.36, 0) -- (8.36, 2.88);
+        \draw (8.36, 0) node[below] {\scriptsize 4.18};
+        \draw (0, 2.88) node[left] {\scriptsize 0.36};
+        \draw[ultra thick, black] (-0.7, 0) -- (8.36, 0);
+        %\draw (4.18,0) .. controls (5,4) and (4,0) .. (4,4);
+        %\draw (4,4) .. controls (4,8) and (4,9) .. (7,7);
+
+		\draw (0, 0) node[below left] {0};
+	\end{tikzpicture}
+    \caption{Емпірична функція розподілу конкретної реалізації вибірки}
+\end{figure}
+\ \\
+Оскільки ми зробили припущення що наша ГС -- неперервна, функція розподілу
+такої ГС також неперервна. Тому побудуємо також кумулятивну криву\\ 
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}
+        
+		\draw[->] (-0.5,0) -- (17,0) node[below] {$x$};
+		\draw[->] (0,-0.5) -- (0,9);
+
+        %\draw[ultra thick, black] (16, 8) -- (17, 8);
+        \draw[ultra thick, black] (16, 7.76) -- (17, 8);
+        \draw[ultra thick, black] (14.72, 7.2) -- (16, 7.76);
+        \draw[ultra thick, black] (13.46, 6.88) -- (14.72, 7.2);
+        \draw[ultra thick, black] (12.18, 6.16) -- (13.46, 6.88);
+        \draw[ultra thick, black] (10.9, 4.56) -- (12.18, 6.16);
+        \draw[ultra thick, black] (9.64, 2.88) -- (10.9, 4.56);
+        \draw[ultra thick, black] (8.36, 0) -- (9.64, 2.88);
+        \draw[ultra thick, black] (-0.7, 0) -- (8.36, 0);
+
+
+        \draw (16, 0) node[below] {\scriptsize 8};
+        \draw (0, 8) node[left] {\scriptsize 1};
+        \draw (14.72, 0) node[below] {\scriptsize 7.36};
+        \draw (0, 7.76) node[left] {\scriptsize 0.97};
+        \draw (13.46, 0) node[below] {\scriptsize 6.73};
+        \draw (0, 7.2) node[left] {\scriptsize 0.9};
+        \draw (12.18, 0) node[below] {\scriptsize 6.09};
+        \draw (0, 6.88) node[left] {\scriptsize 0.86};
+        %\draw (10.9, 0) node[below] {\scriptsize 5.45};
+        \draw (10.48, 0) node[below] {\scriptsize 5.24};
+        \draw (0, 6.16) node[left] {\scriptsize 0.77};     
+        \draw (9.64, 0) node[below] {\scriptsize 4.82};
+        \draw (0, 4.56) node[left] {\scriptsize 0.57};
+        \draw (0, 4) node[left] {\scriptsize 0.5};
+        \draw (8.36, 0) node[below] {\scriptsize 4.18};
+        \draw (0, 2.88) node[left] {\scriptsize 0.36};
+        %\draw (4.18,0) .. controls (5,4) and (4,0) .. (4,4);
+        %\draw (4,4) .. controls (4,8) and (4,9) .. (7,7);
+
+        \draw[dashed] (0, 4) -- (10.48, 4);
+        \draw[dashed] (10.48, 0) -- (10.48, 4);
+
+		\draw (0, 0) node[below left] {0};
+	\end{tikzpicture}
+    \caption{Кумулятивна крива конкретної реалізації вибірки}
+\end{figure}
+\begin{center}
+    \large
+    \textbf{4. Знайти незміщену оцінку математичного сподівання та дисперсії}
+\end{center}
+Нагадаємо що оцінка $\theta^*$ параметру $\theta$ називається незміщеною, якщо 
+$\mathbb{E} \theta^*_n = \theta$  \\ 
+Як оцінку математичного сподівання виберемо вибіркове середнє:
+$\overline{\xi} = \frac{1}{n}\sum_{k = 1}^{n}\limits \xi_k $\\ 
+Перевіримо незміщеність цієї оцінки: $\mathbb{E} \bar{\xi} \stackrel{?}{=} \mathbb{E} \xi$  \\ 
+$$
+\mathbb{E} \overline{\xi} = \mathbb{E}\left(\frac{1}{n}\sum_{k = 1}^{n}\limits \xi_k\right) 
+= \frac{1}{n} \mathbb{E}\left(\sum_{k = 1}^{n}\limits \xi_k\right) 
+\stackrel{\text{(властивість)}}{=}
+\frac{1}{n}\sum_{k = 1}^{n}\limits \mathbb{E}\xi_k
+\stackrel{(\text{всі } \xi_k\text{ розподілені як }\xi)}{=}
+\frac{1}{n} \cdot n \cdot \mathbb{E} \xi = \mathbb{E} \xi
+$$
+Отже за означенням $\overline{\xi}$ -- незміщена оцінка $\mathbb{E} \xi$ \\ 
+Як оцінку дисперсії виберемо виправлену вибіркову дисперсію:
+$D^{**} \xi = \frac{1}{n-1}\sum_{k = 1}^{n}\limits (\xi_k - \overline{\xi})^2 $\\ 
+Перевіримо незміщеність цієї оцінки: $\mathbb{E} (D^{**} \xi) \stackrel{?}{=} D\xi$  \\
+$$
+\mathbb{E} (D^{**} \xi) = \mathbb{E}\left(\frac{1}{n-1}\sum_{k = 1}^{n}\limits (\xi_k - \overline{\xi})^2\right)
+=\frac{1}{n-1}\cdot \mathbb{E}\left(
+    \sum_{k = 1}^{n} ((\xi_k - \mathbb{E} \xi) - (\overline{\xi} - \mathbb{E} \xi))^2  
+\right) =
+$$
+$$
+= \frac{1}{n-1}\cdot 
+\mathbb{E}\left(
+    \sum_{k = 1}^{n}(\xi_k - \mathbb{E} \xi)^2 - 2 (\overline{\xi} - \mathbb{E} \xi) \cdot 
+    \underbrace{\sum_{k = 1}^{n}(\xi_k - \mathbb{E} \xi)}_{n(\overline{\xi} - \mathbb{E} \xi)}
+    + n(\overline{\xi} - \mathbb{E} \xi)^2
+    \right) = 
+$$
+$$
+=
+\frac{1}{n-1}\cdot 
+\mathbb{E}\left(
+    \sum_{k = 1}^{n}(\xi_k - \mathbb{E} \xi)^2 - 2n (\overline{\xi} - \mathbb{E} \xi)^2
+    + n(\overline{\xi} - \mathbb{E} \xi)^2
+    \right) = 
+    \frac{1}{n-1}\cdot 
+\mathbb{E}\left(
+    \sum_{k = 1}^{n}(\xi_k - \mathbb{E} \xi)^2 - n (\overline{\xi} - \mathbb{E} \xi)^2
+    \right) = 
+$$
+$$
+\stackrel{(1)}{=}
+\frac{1}{n-1}\cdot 
+\mathbb{E}\left(
+    \sum_{k = 1}^{n}(\xi_k - \mathbb{E} \xi)^2 - n (\overline{\xi} - \mathbb{E} \overline{\xi})^2
+    \right) \stackrel{(2)}{=}
+    \frac{1}{n-1}\cdot (nD \xi - n D \overline{\xi}) \stackrel{(3)}{=}
+    \frac{1}{n-1}\cdot (nD \xi - D \xi) = D \xi
+$$
+Пояснення переходу (1): Вище доведено незміщеність $\overline{\xi}$
+  як оцінки $\mathbb{E} \xi$, тому $\mathbb{E} \xi = \mathbb{E} \overline{\xi}$  \\ 
+Пояснення переходу (2): Всі $\xi_k$ розподілені як $\xi$, 
+тому $\mathbb{E} (\xi_k - \mathbb{E} \xi)^2 = \mathbb{E} (\xi - \mathbb{E} \xi)^2 = D \xi$, отже \\
+$\sum_{k = 1}^{n}  \mathbb{E} (\xi_k - \mathbb{E} \xi)^2 = n \cdot D \xi$; \ 
+$\overline{\xi}$ -- випадкова величина, тому 
+$\mathbb{E} (\overline{\xi} - \mathbb{E} \overline{\xi})^2 = D \overline{\xi}$  \\ 
+Пояснення переходу (3): 
+$D \overline{\xi} = D \left(\frac{1}{n}\sum_{k = 1}^{n}\limits \xi_k\right) = 
+\frac{1}{n^2}D\left(\sum_{k = 1}^{n}\limits \xi_k\right) = \frac{1}{n}D \xi$,
+ останній перехід можливий за рахунок того що координати випадкової вибірки однаково розподілені і незалежні \\
+Отримали що за означенням $D^{**} \xi$ -- незміщена оцінка дисперсії 
+
+\begin{center}
+    \large
+    \textbf{5. Обчислити значення вибіркової медіани, моди, асиметрії}
+\end{center}
+Для початку обчислимо значення вибіркового середнього та виправленої вибіркової дисперсії:\\
+\textbf{Вибіркове середнє} $\overline{\xi} = \frac{1}{n}\sum_{k = 1}^{n}\limits \xi_k$\\ 
+Значення вибіркового середнього: $\overline{x} 
+= \frac{1}{n}\sum_{k = 1}^{n}\limits x_k
+= \frac{1}{100}\sum_{k = 1}^{100}\limits x_k = 5.4986$\\   
+\textbf{Виправлена вибіркова дисперсія} 
+$D^{**}\xi = \frac{1}{n-1}\sum_{k = 1}^{n}\limits (\xi_k - \overline{\xi})^2$\\ 
+Значення виправленої вибіркової дисперсії: $(D^{**}\xi)_{\text{зн}} 
+= \frac{1}{n-1}\sum_{k = 1}^{n}\limits (x_k - \overline{x})^2
+= \frac{1}{99}\sum_{k = 1}^{100}\limits (x_k - 5.4986)^2
+\approx 1.784$ \\ 
+\textbf{Вибіркова мода} \\ 
+$(Mo^*_1 \xi)_{\text{зн}} =
+y_i + l(\Delta_i) \cdot \frac{n_i - n_{i-1}}{(n_i-n_{i-1})+(n_i-n_{i+1})}=
+4.18 + 0.64\cdot \frac{36}{36 + (36-21)} \approx 4.632 $ \\ 
+Також знайдемо значення вибіркової моди графічно, для цього візьмемо графік найвищого стовпця гістограми, та його сусідніх стовпців
+(оскільки найвищий стовпчик у нас перший, то сусідній буде тільки 1): \\ 
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}[scale=0.7]
+        
+		\draw[->] (-0.5,0) -- (12,0);
+		\draw[->] (0,-0.5) -- (0,5);
+
+        \draw (8.36,0) rectangle (9.64,4.52);
+        \draw (9.64,0) rectangle (10.9, 2.64);
+
+        \draw (-0.1, 4.52) -- (0.1, 4.52) node[left] {0.565 \ };
+        \draw (-0.1, 2.64) -- (0.1, 2.64) node[left] {0.33 \ };
+        \draw (8, 0) node[below] {4.18};
+        \draw (10.9, 0) node[below] {5.45};
+
+        \draw[ultra thin] (8.36, 0) -- (9.64, 4.52);
+        \draw[ultra thin] (8.36, 4.52) -- (9.64, 2.64);
+        \fill (9.265,3.195) circle (0.7mm);
+        \draw[dashed] (9.265, 0) -- (9.265, 3.195);
+        \draw (9.265, 0) node[below] {4.63};
+
+
+
+        %\draw (4.18,0) .. controls (5,4) and (4,0) .. (4,4);
+        %\draw (4,4) .. controls (4,8) and (4,9) .. (7,7);
+
+	\end{tikzpicture}
+\end{figure}
+\ \\
+Цим способом отримуємо $(Mo^*_2 \xi)_{\text{зн}} \approx 4.63$\\
+\textbf{Вибіркова медіана} \\ 
+$(Me^*_1 \xi)_{\text{зн}} = y_i + \frac{l(\Delta_i)}{n_i}\cdot \left(
+    \frac{n}{2} - \sum_{k = 1}^{i - 1}\limits n_k 
+\right) =
+4.82 + \frac{0.64}{21}\cdot (\frac{100}{2} - 36) \approx 5.247 $\\
+Також можна знайти значення вибіркової медіани за кумулятивною кривою, абсциса точки 
+в якій кумулята набуває значення 0.5 і буде значенням вибіркової медіани, в нашому випадку 
+$(Me^*_2 \xi)_\text{зн} \approx 5.24$ \\
+\textbf{Вибіркова асиметрія}
+$As^* \xi$ = $\frac{\frac{1}{n}\sum_{k = 1}^{n}\limits (\xi_k - \overline{\xi})^3  }{(D^*\xi)^{\nicefrac{3}{2}}}$ 
+$$
+(As^*\xi)_{\text{зн}} = 
+\frac{\frac{1}{n}\sum_{k = 1}^{n}\limits (x_k - \overline{x})^3}{(D^{**}\xi)_{\text{зн}}^{\nicefrac{3}{2}}}
+\approx 
+\frac{\frac{1}{100}\sum_{k = 1}^{100}\limits (x_k - 5.4986)^3}{1.784^{\nicefrac{3}{2}}} \approx 2.3215
+$$
+
+
+\begin{center}
+    \large
+    \textbf{6. Висунути гiпотезу про розподiл, за яким отримано вибiрку}
+\end{center}
+Для висування гіпотези щодо розподілу, подивимося ще раз на гістограму, співставлену нашій конкретній реалізації вибірки. 
+\\
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}[scale=0.8]
+        
+		\draw[->] (-0.5,0) -- (14,0);
+		\draw[->] (0,-0.5) -- (0,10);
+
+        \draw (4.18,0) rectangle (4.82,9.04);
+        \draw (4.82,0) rectangle (5.45,5.28);
+        \draw (5.45,0) rectangle (6.09,5.024);
+        \draw (6.09,0) rectangle (6.73,2.256);
+        \draw (6.73,0) rectangle (7.36,1.008);
+        \draw (7.36,0) rectangle (8,1.76);
+        \draw (8,0) rectangle (13.09,0.096);
+        \draw (-0.1, 9.04) -- (0.1, 9.04) node[left] {0.565 \ };
+        \draw (-0.1, 5.28) -- (0.1, 5.28) node[left] {0.33 \ };
+        \draw (-0.1, 2.256) -- (0.1, 2.256) node[left] {0.141 \ };
+        \draw (-0.1, 1.008) -- (0.1, 1.008) node[left] {0.063 \ };
+        \draw (-0.1, 0.096) -- (0.1, 0.096);
+        \draw (0, 0.2) node[left] {0.006};
+        \draw (4.18, 0) node[below] {4.18};
+        \draw (5.45, 0) node[below] {5.45};
+        \draw (6.73, 0) node[below] {6.73};
+        \draw (8, 0) node[below] {8};
+        \draw (13.09, 0) node[below] {13.09};
+
+
+
+
+        %\draw (4.18,0) .. controls (5,4) and (4,0) .. (4,4);
+        %\draw (4,4) .. controls (4,8) and (4,9) .. (7,7);
+
+	\end{tikzpicture}
+
+\end{figure}
+\ \\
+Оскільки гістограма є своєрідним аналогом функції щільності ГС, з вигляду гістограми
+можемо припустити що на півосі [4.18; $+\infty$) щільність є спадною, при чому спадає достатньо різко
+і при x>8 ця щільність є дуже малою(лиш 3 координати $\vec{x}$ потрапили в цю піввісь). 
+Це характерно для щільності показникового розподілу, при чому оскільки найменше значення $\vec{x}$
+це 4.18, то якщо ГС має експоненційний розподіл, майже напевно він із зсувом. 
+(оскільки на лекційних заняттях не було функції розподілу та числових характеристик 
+показникового розподілу із зсувом, їх виведено у \hyperref[sec:hello]{додатку}). Оскільки
+значення параметру зсуву є найменшим значенням,
+ яке може приймати ВВ, при чому це і найімовірніше значення(мода ВВ),
+ можна зробити припущення що значення параметру зсуву близьке до мінімального значення
+ конкретної реалізації вибірки, але не більше за нього (щільність при x< $\theta$ нульова).
+ Тому припустимо, що значення параметру зсуву $\theta \approx \min_{1 \le k \le n}\limits x_k = 4.18$ \\ 
+ Подивимось на числові характеристики такого розподіу: \\ 
+ Нехай $ \eta \sim Exp(\lambda, \theta)$, $D \eta = \lambda^2$. Ми маємо
+ $(D ^{**}\xi)_{\text{зн}} \approx 1.784, \sqrt{(D^{**}\xi)_{\text{зн}}} \approx 1.336$ \\ 
+ $ \sqrt{D \eta} =  \lambda$, отже можемо припустити що значення $\lambda \approx$ 1.336  
+\\ 
+Перевіримо тепер інші числові характеристики припустивши що $\eta \sim Exp(1.336, 4.18)$\\ 
+ $\mathbb{E} \eta = \lambda + \theta \approx 1.336+4.18 = 5.516$, 
+замітимо що ми отримали значення, близьке до $\overline{x}=5.4986$  \\ 
+Також ми знаємо що у показниковому розподілі із зсувом, мода є значенням параметру зсуву.\\ 
+$(Mo^*_1 \xi)_{\text{зн}}$=4.632, що є близьким до припущеного значення $\theta \approx 4.18$ \\ 
+$Me \eta$ = $\lambda \ln2 + \theta \approx 5.106$. Нагадаємо що
+$(Me^*_1 \xi)_{\text{зн}} \approx 5.247$. \\ 
+Асиметрія гіпотетичного розподілу $As \eta = 2$, значення вибіркової асиметрії -- $2.3215$\\ 
+Побудуємо тепер графік щільності $\eta \sim Exp(1.336, 4.18)$ поверх нашої гістограми.
+
+
+
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}[scale=0.8]
+        
+		\draw[->] (-0.5,0) -- (14,0);
+		\draw[->] (0,-0.5) -- (0,12);
+
+        \draw (4.18,0) rectangle (4.82,9.04);
+        \draw (4.82,0) rectangle (5.45,5.28);
+        \draw (5.45,0) rectangle (6.09,5.024);
+        \draw (6.09,0) rectangle (6.73,2.256);
+        \draw (6.73,0) rectangle (7.36,1.008);
+        \draw (7.36,0) rectangle (8,1.76);
+        \draw (8,0) rectangle (13.09,0.096);
+        \draw (-0.1, 9.04) -- (0.1, 9.04) node[left] {0.565 \ };
+        \draw (-0.1, 5.28) -- (0.1, 5.28) node[left] {0.33 \ };
+        \draw (-0.1, 2.256) -- (0.1, 2.256) node[left] {0.141 \ };
+        \draw (-0.1, 1.008) -- (0.1, 1.008) node[left] {0.063 \ };
+        \draw (-0.1, 0.096) -- (0.1, 0.096);
+        \draw (0, 0.2) node[left] {0.006};
+        \draw (4.18, 0) node[below] {4.18};
+        \draw (5.45, 0) node[below] {5.45};
+        \draw (6.73, 0) node[below] {6.73};
+        \draw (8, 0) node[below] {8};
+        \draw (13.09, 0) node[below] {13.09};
+
+
+
+        \draw[blue, ultra thick] (4.18, 12) .. controls (4.5,9.44) and (5,6.48) .. (5.5 ,4.48);
+        \draw[blue, ultra thick] (5.5 ,4.48) .. controls (6,3.04) and (6.5,2.11) .. (7,1.45);
+        \draw[blue, ultra thick] (7,1.45) .. controls (7.5,0.99) and (8,0.688) .. (8.5,0.464);
+        \draw[blue, ultra thick] (8.5,0.464) .. controls (9,0.32) and (10,0.16) .. (11,0.072);
+        \draw[blue, ultra thick] (11,0.072) .. controls (12,0.0336) and (13,0.016) .. (14,0.008);
+
+
+
+        %\draw (4,4) .. controls (4,8) and (4,9) .. (7,7);
+
+	\end{tikzpicture}
+
+\end{figure}
+\ \\ 
+Як бачимо з малюнку, крива щільності достатньо близька до стовпчиків гістограми. \\ 
+Порівняймо також нашу кумулятивну криву із графіком функції розподілу $\eta$ 
+
+
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}
+        
+		\draw[->] (-0.5,0) -- (17,0) node[below] {$x$};
+		\draw[->] (0,-0.5) -- (0,9);
+
+        %\draw[ultra thick, black] (16, 8) -- (17, 8);
+        %\draw[ultra thick, black] (15.36, 7.76) -- (17, 8);
+        %\draw[ultra thick, black] (14.09, 7.2) -- (15.36, 7.76);
+        %\draw[ultra thick, black] (12.82, 6.88) -- (14.09, 7.2);
+        %\draw[ultra thick, black] (11.54, 6.16) -- (12.82, 6.88);
+        %\draw[ultra thick, black] (10.27, 4.56) -- (11.54, 6.16);
+        %\draw[ultra thick, black] (9, 2.88) -- (10.27, 4.56);
+        %\draw[ultra thick, black] (8.36, 0) -- (9, 2.88);
+        %\draw[ultra thick, black] (-0.7, 0) -- (8.36, 0);
+
+        \draw[ultra thick, black] (16, 7.76) -- (17, 8);
+        \draw[ultra thick, black] (14.72, 7.2) -- (16, 7.76);
+        \draw[ultra thick, black] (13.46, 6.88) -- (14.72, 7.2);
+        \draw[ultra thick, black] (12.18, 6.16) -- (13.46, 6.88);
+        \draw[ultra thick, black] (10.9, 4.56) -- (12.18, 6.16);
+        \draw[ultra thick, black] (9.64, 2.88) -- (10.9, 4.56);
+        \draw[ultra thick, black] (8.36, 0) -- (9.64, 2.88);
+        \draw[ultra thick, black] (-0.7, 0) -- (8.36, 0);
+
+
+        \draw (16, 0) node[below] {\scriptsize 8};
+        \draw (0, 8) node[left] {\scriptsize 1};
+        \draw (14.72, 0) node[below] {\scriptsize 7.36};
+        \draw (0, 7.76) node[left] {\scriptsize 0.97};
+        \draw (13.46, 0) node[below] {\scriptsize 6.73};
+        \draw (0, 7.2) node[left] {\scriptsize 0.9};
+        \draw (12.18, 0) node[below] {\scriptsize 6.09};
+        \draw (0, 6.88) node[left] {\scriptsize 0.86};
+        \draw (10.9, 0) node[below] {\scriptsize 5.45};
+        \draw (0, 6.16) node[left] {\scriptsize 0.77};     
+        \draw (9.64, 0) node[below] {\scriptsize 4.82};
+        \draw (0, 4.56) node[left] {\scriptsize 0.57};
+        \draw (8.36, 0) node[below] {\scriptsize 4.18};
+        \draw (0, 2.88) node[left] {\scriptsize 0.36};
+        %\draw (4.18,0) .. controls (5,4) and (4,0) .. (4,4);
+        %\draw (4,4) .. controls (4,8) and (4,9) .. (7,7);
+        \draw[ultra thick, red, dashed] (-0.7, 0) -- (8.36, 0);
+        \draw[red, ultra thick, dashed] (8.36, 0.0) .. controls (8.6, 0.76) and (8.7, 0.96) .. (8.8, 1.28);
+        \draw[red, ultra thick, dashed] (8.8, 1.28) .. controls (9.0, 1.768) and (9.2, 2.216) .. (9.4, 2.632);
+        \draw[red, ultra thick, dashed] (9.4, 2.632) .. controls (9.6, 3.016) and (9.8, 3.376) .. (10.0, 3.712);
+        \draw[red, ultra thick, dashed] (10.0, 3.712) .. controls (10.2, 4.024) and (10.4, 4.304) .. (10.6, 4.576);
+        \draw[red, ultra thick, dashed] (10.6, 4.576) .. controls (10.8, 4.824) and (11.0, 5.048) .. (11.2, 5.264);
+        \draw[red, ultra thick, dashed] (11.2, 5.264) .. controls (11.4, 5.464) and (11.6, 5.64) .. (11.8, 5.816);
+        \draw[red, ultra thick, dashed] (11.8, 5.816) .. controls (12.0, 5.968) and (12.2, 6.12) .. (12.4, 6.256);
+        \draw[red, ultra thick, dashed] (12.4, 6.256) .. controls (12.6, 6.376) and (12.8, 6.496) .. (13.0, 6.608);
+        \draw[red, ultra thick, dashed] (13.0, 6.608) .. controls (13.2, 6.704) and (13.4, 6.8) .. (13.6, 6.888);
+        \draw[red, ultra thick, dashed] (13.6, 6.888) .. controls (13.8, 6.968) and (14.0, 7.04) .. (14.2, 7.112);
+        \draw[red, ultra thick, dashed] (14.2, 7.112) .. controls (14.4, 7.176) and (14.6, 7.232) .. (14.8, 7.288);
+        \draw[red, ultra thick, dashed] (14.8, 7.288) .. controls (15.0, 7.336) and (15.2, 7.384) .. (15.4, 7.432);
+        \draw[red, ultra thick, dashed] (15.4, 7.432) .. controls (15.6, 7.472) and (15.8, 7.512) .. (16.0, 7.544);
+        \draw[red, ultra thick, dashed] (16.0, 7.544) .. controls (16.2, 7.576) and (16.4, 7.608) .. (16.6, 7.64);
+        \draw[red, ultra thick, dashed] (16.6, 7.64) .. controls (16.8, 7.664) and (17.0, 7.688) .. (17.2, 7.712);
+
+
+		\draw (0, 0) node[below left] {0};
+	\end{tikzpicture}
+\end{figure}
+\ \\ 
+Знову ж таки отримали достатньо близькі графіки. 
+Враховуючи все вище сказане вважаю доцільним ввести гіпотезу 
+$H_0: \xi \sim Exp(\lambda, \theta)$, знайти точкові оцінки та перевірити 
+цю гіпотезу щодо розподілу генеральної сукупності критерієм Пірсона. 
+
+
+\begin{center}
+    \large
+    \textbf{7. Знайти точкові оцінки параметрів гіпотетичного закону розподілу та перевірити їх властивості}
+\end{center}
+Для знаходження точкових оцінок використаємо метод моментів та метод максимальної правдоподібності.\\ 
+\textbf{Метод моментів:}\\ 
+$$
+\begin{cases}
+    \mathbb{E} \xi = \lambda + \theta \\ 
+    D \xi = \lambda^2
+\end{cases}
+\implies
+\begin{cases}
+    \theta = \mathbb{E} \xi - \lambda  \\ 
+    \lambda = \sqrt{D \xi} 
+\end{cases}
+\implies
+\begin{cases}
+    \theta = \mathbb{E} \xi - \sqrt{D \xi}  \\ 
+    \lambda = \sqrt{D \xi} 
+\end{cases}
+\implies
+\begin{cases}
+    \theta^*_{MM} = \overline{\xi} - \sqrt{D^{**} \xi}  \\ 
+    \lambda^*_{MM} = \sqrt{D^{**} \xi} 
+\end{cases}
+$$
+\textbf{Метод максимальної правдоподібності:}\\
+Нагадаємо, що 
+$
+\ln{\mathcal{L}_{Exp}(\vec{x}, \lambda, \theta)} = 
+-n \ln{\lambda} - \frac{1}{\lambda}\sum_{k=1}^{n}\limits x_k + \frac{n \theta}{\lambda}
+$ \\ 
+Згідно методу нам потрібно знайти $\argmax_{\lambda, \theta}\limits \ln{\mathcal{L}_{Exp}(\vec{x}, \lambda, \theta)}$:
+\\ 
+Необхідна умова екстремуму:\\
+$$
+\begin{cases}
+    \frac{\partial \ln{\mathcal{L}_{Exp}(\vec{x}, \lambda, \theta)}}{\partial \lambda}
+     = -\frac{n}{\lambda} + \frac{1}{\lambda^2} \sum_{k=1}^{n}\limits x_k 
+     - \frac{n \theta}{\lambda^2}= 0 \\ 
+    \frac{\partial \ln{\mathcal{L}_{Exp}(\vec{x}, \lambda, \theta)}}{\partial \theta} = 
+    \frac{n}{\lambda} \neq  0
+\end{cases}
+$$
+Отже екстремуму функції двох змінних немає. \\ 
+Але ми бачимо що
+$\frac{\partial \ln{\mathcal{L}_{Exp}(\vec{x}, \lambda, \theta)}}{\partial \theta}>0$, отже
+$\ln{\mathcal{L}_{Exp}(\vec{x}, \lambda, \theta)}$ зростає із зростанням $\theta$. \\ 
+Проте $\theta$ обмежена зверху значенням $\min_{1\le k \le n}\limits x_k $,
+звідси $\ln{\mathcal{L}_{Exp}(\vec{x}, \lambda, \theta)}$ набуватиме найбільшого значення при 
+$\theta = \min_{1\le k \le n}\limits x_k$. \\ 
+Залишається знайти при якому $\lambda \ \ \ln{\mathcal{L}_{Exp}(\vec{x}, \lambda, \theta)}$ набуватиме найбільшого значення. 
+\\ 
+$$
+\pdv{\ln{\mathcal{L}_{Exp}(\vec{x}, \lambda, \theta)}}{\lambda} = 
+-\frac{n}{\lambda} + \frac{n}{\lambda^2} \overline{x}-\frac{n \theta}{\lambda^2}
+= \frac{n}{\lambda^2}(-\lambda + \overline{x} - \theta) = 0 \implies
+\lambda_{\text{кр}} = \overline{x} - \theta
+$$
+
+$$
+\left.\pdv[2]{\ln{\mathcal{L}_{Exp}(\vec{x}, \lambda, \theta)}}{\lambda}\right|_{\lambda = \overline{x} - \theta} = 
+\left.\left(\frac{n}{\lambda^2} - \frac{2n(\overline{x} - \theta)}{\lambda^3}\right)\right|_{\lambda = \overline{x} - \theta} = 
+-\frac{n}{(\overline{x} - \theta)^2} < 0
+$$ 
+Отже $\lambda_{max} = \overline{x} - \theta, \ \theta_{max} = \min_{1\le k \le n}\limits x_k$ \\ 
+Звідси $\argmax_{\lambda, \theta}\limits \ln{\mathcal{L}_{Exp}(\vec{x}, \lambda, \theta)} = 
+\ln{\mathcal{L}_{Exp}(\vec{x}, \overline{x} - \theta, \min x_k)}$, отримуємо оцінки: \\
+$$
+\begin{cases}
+    \lambda^{**}_{\text{ммп}} = \overline{\xi} - \theta \\ 
+     \theta^{**}_{\text{ммп}} = \min_{1 \le k \le n}\limits \xi_k
+\end{cases}
+$$
+Перевіримо властивості оцінок, отриманих методом максимальної правдоподібності: \\ 
+\circled{1} Перевірка властивостей $\lambda^{**} = \overline{\xi} - \theta$: \\ 
+\textbf{Незміщеність}:\\ 
+$$
+\mathbb{E} \lambda^{**} = \mathbb{E} \left(\frac{1}{n} \sum_{k=1}^{n} \xi_k - \theta\right) 
+= \frac{1}{n} \mathbb{E} \left(\sum_{k=1}^{n} \xi_k\right) - \mathbb{E} \theta = 
+\mathbb{E} \xi - \theta = \lambda + \theta - \theta = \lambda
+$$
+Отже за означенням оцінка є незміщеною \\ 
+\textbf{Конзистенстність}: \\
+Використаємо достатню умову конзистентності для незміщених оцінок:\\ 
+$$
+D \lambda^{**} = D (\overline{\xi} - \theta) = D \overline{\xi} = 
+D \left( \frac{1}{n} \sum_{k=1}^n \xi_k  \right) = 
+\frac{1}{n^2} \sum_{k=1}^n D \xi = \frac{1}{n^2} \cdot n D \xi = \frac{1}{n} \lambda^2 \to 0, n \to \infty
+$$
+Отже за достатньою умовою оцінка є конзистентною \\ 
+\textbf{Ефективність}: \\ 
+Найзручніше доводити ефективність за наслідком з нерівності Рао-Крамера, використаємо його: \\ 
+$$
+\frac{\partial \ln{\mathcal{L}_{Exp}(\vec{\xi}, \lambda, \theta)}}{\partial \lambda} = 
+-\frac{n}{\lambda} + \frac{n}{\lambda^2} \overline{\xi} - \frac{n \theta}{\lambda^2}
+= \frac{n}{\lambda^2}(- \lambda + \overline{\xi} - \theta) 
+= \frac{n}{\lambda^2}(\lambda^{**} - \lambda) = 
+C(n, \lambda) \cdot  (\lambda^{**} - \lambda)
+$$
+Отже за наслідком з нерівності Рао-Крамера, оцінка є ефективною. \\ 
+\textbf{Асимптотична нормальність}: \\
+Центруємо і нормуємо нашу випадкову величину $\lambda^{**}$:
+$$
+\frac{\lambda^{**} - \mathbb{E} \lambda^{**}}{ \sqrt{D \lambda^{**}} }
+= \frac{\lambda^{**} - \lambda }{ \sqrt{\frac{\lambda^2}{n}}}
+= \frac{ \sqrt{n} \left(\frac{1}{n}\sum_{k = 1}^{n}\limits \xi_k - \theta - (\mathbb{E} \xi - \theta) \right)}{ \lambda}
+= \frac{\frac{1}{n} \sqrt{n} \left( \sum_{k = 1}^{n}\limits (\xi_k - \mathbb{E} \xi)   \right) }{ \sqrt{D \xi} } = 
+\frac{1}{ \sqrt{n} }\sum_{k = 1}^{n} \left(\frac{ \xi_k - \mathbb{E} \xi}{ \sqrt{D \xi} } \right)  
+$$
+За наслідком з теореми Ляпунова: 
+$$ 
+\frac{\lambda^{**} - \mathbb{E} \lambda^{**}}{ \sqrt{D \lambda^{**}} } = 
+\frac{1}{ \sqrt{n} }\sum_{k = 1}^{n} \left(\frac{ \xi_k - \mathbb{E} \xi}{ \sqrt{D \xi} } \right)
+\stackrel{F}{\longrightarrow } \eta \sim N(0,1), n \to \infty
+$$
+Отже за означенням оцінка є асимптотично нормальною.\\  \\ 
+\circled{2} Перевірка властивостей $\theta^{**} = \min_{1 \le k \le n}\limits \xi_k$: \\ 
+Для початку знайдемо закон розподілу мінімуму $\xi_k$ :\\
+$$
+f_{\theta^{**}}(x) = n(1-F_{\xi}(x))^{n-1}f_{\xi}(x) = 
+n\left(1-1+e^{-\frac{1}{\lambda}(x-\theta)}\right)^{n-1} 
+\cdot \frac{1}{\lambda}e^{-\frac{1}{\lambda}(x-\theta)}
+= \frac{n}{\lambda} e^{-\frac{n}{\lambda}(x-\theta)}, x\geq\theta
+$$
+З щілності розподілу мінімуму бачимо, що $\theta^{**} \sim Exp(\frac{\lambda}{n}, \theta)$ \\  
+\textbf{Незміщеність}: \\ 
+$$ 
+\mathbb{E} \theta^{**} = \frac{\lambda}{n} + \theta
+$$ 
+Бачимо що така оцінка є тільки асимптотично незміщеною, розглянемо оцінку 
+$\theta^*_1 = \min \xi_k - \frac{\lambda}{n}$:
+$$  
+\mathbb{E} \theta^*_1 =
+ \mathbb{E}\left( \theta^{**} - \frac{\lambda}{n}\right) =
+  \mathbb{E} \theta^{**} - \frac{\lambda}{n} =
+  \theta + \frac{\lambda}{n} - \frac{\lambda}{n} = \theta
+$$
+Така оцінка є незміщеною, тому надалі розглядатимемо саме її. \\ 
+\textbf{Конзистентність}: \\ 
+Знайдемо D$\theta^*_1$
+$$  
+D \theta^*_1 = D\left( \theta^{**} - \frac{\lambda}{n}\right) 
+= D \theta^{**} =
+\left(\frac{\lambda}{n}\right)^2 \longrightarrow 0, n \to \infty
+$$ 
+Отже за достатньою умовою оцінка є конзистентною \\ 
+\textbf{Ефективність}: \\ 
+Використаємо нерівність Рао-Крамера:
+$$ 
+\mathcal{I}(\theta) = \mathbb{E}\left(
+    \frac{\partial \ln{\mathcal{L}_{Exp}(\vec{\xi}, \lambda, \theta)}}{\partial \theta}
+\right)^2 = \mathbb{E} \left(\frac{n}{\lambda}\right)^2 = \left(\frac{n}{\lambda}\right)^2 =
+\frac{1}{D \theta^*_1}
+$$ 
+Отже з нерівності Рао-Крамера оцінка є ефективною \\ 
+Без надії сподіваючись, перевіримо оцінку на \textbf{асимптотичну нормальність}:\\ 
+Центруємо і нормуємо нашу оцінку: \\ 
+$$ 
+ \frac{\theta^*_1 - \mathbb{E} \theta^*_1}{ \sqrt{D \theta^*_1} } = 
+ \frac{n(-\frac{\lambda}{n} + \min \xi_k - \theta)}{\lambda} \stackrel{(1)}{=}
+ \frac{n}{\lambda}\left(-\frac{\lambda}{n} + \eta \right) \stackrel{(2)}{=}
+ \uppsi-1, \ \ \ \eta \sim Exp \left(\frac{\lambda}{n} \right), \ \uppsi \sim Exp(1)
+$$
+Перехід (1): $\min \xi_k \sim Exp\left( \frac{\lambda}{n}, \theta \right) = \eta + \theta$ \\ 
+Перехід (2): $\frac{n}{\lambda} \eta \sim Exp(1)$ за властивістю експоненційного розподілу, яка доведена в додатку 
+$$
+\mathlarger{\mathlarger{\chi}}_{\uppsi -1}(t) = 
+e^{-it} \cdot \mathlarger{\mathlarger{\chi}}_{\uppsi}(t)= 
+e^{-it} \frac{1}{1-it} \not\to e^{-\frac{t^2}{2}}
+$$ 
+Отже за теоремою Леві $\frac{\theta^*_1 - \mathbb{E} \theta^*_1}{ \sqrt{D \theta^*_1} } \not \stackrel{F}{\to} N(0,1)$, тому оцінка не є асимптотично нормальною. \\
+Остаточно отримали такі найкращі(ефективні) оцінки:
+$$
+\lambda^{**} = \overline{\xi} - \theta, \ \ \ \ \theta^*_1 = \min_{1 \le k \le n}\limits \xi_k -\frac{\lambda}{n}
+$$
+Знайдемо значення цих точкових оцінок: \\ 
+Оскільки $\lambda^{**} = \lambda^{**}(\vec{\xi}, \theta), \theta^*_1 = \theta^*_1(\vec{\xi}, \lambda)$,
+ а $ \theta$ і $\lambda$ нам невідомі, ми не можемо знайти точні значення цих точкових оцінок. 
+ Проте ми можемо знайти приблизні значення замінюючи невідомі $\theta, \lambda$  значеннями їх найкращих оцінок:
+ $$    
+    (\lambda^{**})_{\text{зн}}  = \overline{x} - \theta \approx \overline{x} - (\theta^*_1)_{\text{зн}} =
+    \overline{x} - \min x_k + \frac{\lambda}{n}
+    \approx \overline{x} - \min x_k + \frac{(\lambda^{**})_{\text{зн}} }{n} \implies
+    (\lambda^{**})_{\text{зн}} \approx \frac{n}{n-1}(\overline{x} - \min x_k)
+ $$
+$$
+(\theta^*_1)_{\text{зн}} = \min x_k - \frac{\lambda}{n} \approx \min x_k - \frac{(\lambda^{**})_{\text{зн}}}{n} = 
+\min x_k - \frac{1}{n}(\overline{x} - \theta) \approx 
+\min x_k - \frac{1}{n}(\overline{x} - (\theta^*_1)_\text{зн}) \implies
+(\theta^*_1)_\text{зн} \approx \frac{n}{n-1} \left( \min x_k - \frac{1}{n} \overline{x} \right)
+$$
+В такому випадку $(\lambda^{**}_\text{зн}) \approx \frac{100}{99}(5.4986-4.18) \approx 1.332 $, 
+$(\theta^*_1)_{\text{зн}} \approx \frac{100}{99}(4.18-\frac{1}{100}\cdot 5.4986) \approx 4.167$ \\ 
+Отже можемо висунути статистичну гіпотезу: $H_0: \xi \sim Exp(1.332, 4.167)$. Перевіримо таку гіпотезу за критерієм згоди Пірсона.
+
+\begin{center}
+    \large
+    \textbf{8. Перевірити за допомогою критерію Пірсона гіпотезу про розподіл з рівнем значущості $\alpha$ = 0.05}
+\end{center} 
+Перевіряємо гіпотезу $H_0: \xi \sim Exp(1.332, 4.167)$, оскільки в якості параметрів розподілу ми використовуємо значення оцінок цих параметрів, то гіпотеза є складною.\\ 
+Згідно гіпотези множина X можливих значень $\xi$ -- піввісь [4.167;$ +\infty $).Розіб'ємо 
+цю множину на 9 таких підмножин, що попарно не перетинаються:
+$[4.167; 4.18)$, $[4.18; 4.82)$, $[4.82; 5.45)$, $[5.45; 6.09)$, $[6.09; 6.73)$, $[6.73; 7.36)$, $[7.36;8)$, $[8; 13.09]$, $(13.09; +\infty)$   
+\begin{table}[H]
+	\begin{adjustbox}{width=\columnwidth,center}
+		\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}\hline 
+            $X_i$  & 
+            $[4.167; 4.18)$ & $[4.18; 4.82)$ & $[4.82; 5.45)$ & $[5.45; 6.09)$ & $[6.09; 6.73)$ & $[6.73; 7.36)$
+            & $[7.36;8)$ & $[8; 13.09]$ & $(13.09;+\infty)$ 
+            \\ \hline
+			$p_i$ &0.0096&$0.3754$&$0.2331$&$0.1447$&$0.0899$&$0.0558$&$0.0346$&$0.0554$&0.0015 \\ \hline
+			$n p_i$ &0.96&$37.54$&$23.31$&$14.47$&$8.99$&$5.58$&$3.46$&$5.54$&0.15 \\ \hline
+		\end{tabular}
+	\end{adjustbox}
+\end{table}
+\ \\
+Для того щоб для кожного $X_i$ виконувалось $n p_i >10$ об'єднаємо $X_1$ з $X_2$, 
+$X_5 \text{ з }  X_6, X_7 , X_8 , X_9 $. Отримаємо 4 підмножини $X_i$
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}{|c|c|c|c|c|}\hline 
+            $X_i$  & 
+            $[4.167; 4.82)$ & $[4.82; 5.45)$ & $[5.45; 6.09)$ & $[6.09; +\infty)$ \\ \hline
+			$p_i$ &$0.385$&$0.2331$&$0.1447$&$0.2372$ \\ \hline
+			$n p_i$ &$38.5$&$23.31$&$14.47$&$23.72$ \\ \hline
+            $n_i$ &$36$&$21$&$20$&$23$ \\ \hline
+            $n_i - n p_i$ &$-2.5$&$-2.31$&$5.53$&$-0.72$ \\ \hline
+		\end{tabular}
+	\end{center}
+\end{table}
+
+$$
+\eta = \frac{(n_1 - n p_1)^2}{n p_1} + \frac{(n_2 - n p_2)^2}{n p_2} + 
+\frac{(n_3 - n p_3)^2}{n p_3} + \frac{(n_4 - n p_4)^2}{n p_4}
+$$
+$$
+\eta_{\text{зн}} = \frac{(-2.5)^2}{38.5} + \frac{(-2.31)^2}{23.31} + 
+\frac{5.53^2}{14.47} + \frac{(-0.72)^2}{23.72} \approx 2.5265
+$$  
+За теоремою Пірсона якщо $H_0 $ справджується, то  $\eta \stackrel{F}{\to} \mathlarger{\mathlarger{\chi}}^2_{4-2-1} = \mathlarger{\mathlarger{\chi}}^2_{1}, n \to +\infty$ \\ 
+В такому випадку критична множина W=\{$x \ : \ x \geq t_{0.05, 1} $\} \\
+А область прийняття гіпотези $\overline{W} = \{ x \ : \ x < t_{0.05, 1} \}$, 
+де $t_{0.05, 1}$ -- квантиль рівня 1-0.05 розподілу $\mathlarger{\mathlarger{\chi}}^2_1$ \\ 
+З таблиці хі квадрат $t_{0.05, 1} \approx 3.84$ \\ 
+Як бачимо $\eta_\text{зн} \approx 2.5265 < 3.84 \approx t_{0.05, 1}$, отже $\eta_{\text{зн}} \in \overline{W}$ \\ 
+Отримали що на рівні значущості 0.05 дослідницькі дані не суперечать гіпотезі $H_0 : \xi \sim Exp(1.332, 4.167)$   
+
+\begin{center}
+    \large
+    \textbf{9. Знайти довірчий інтервал для параметрів гіпотетичного закону розподілу, взявши рівень
+    надійності 0.95.}
+\end{center}
+\textbf{Довірчий інтервал параметру $\lambda$:} \\
+Ми довели що оцінка $\lambda^{**} = \overline{\xi} - \theta$ -- асимптотично нормальна, тому
+$$
+\frac{\lambda^{**} - \mathbb{\mathbb{E}} \lambda^{**}}{ \sqrt{D \lambda^{**}} } =
+\frac{ \sqrt{n} (\lambda^{**} - \lambda)}{\lambda} \approx N(0,1)
+$$
+Звідси
+$$
+P \{
+    |\lambda^{**}-\lambda| < \varepsilon    
+\} = 0.95
+\implies
+P \left\{
+     \frac{ \sqrt{n} |\lambda^{**}-\lambda|}{\lambda} < \frac{\varepsilon \cdot \sqrt{n} }{\lambda}    
+\right\} = 0.95
+\implies
+P \left\{
+     \frac{ \sqrt{n} |\lambda^{**}-\lambda|}{\lambda} < t_{0.475}    
+\right\} = 0.95 = 2\Phi(t_{0.475})
+$$
+З таблиці значень функції Лапласа $t_{0.475}$ =1.96
+\\ 
+Маємо 
+$$
+\frac{ \sqrt{n} |\lambda^{**}-\lambda|}{\lambda} < t_{0.475} \implies
+\frac{10|\lambda^{**}-\lambda|}{\lambda} < 1.96 \implies
+|\lambda^{**} - \lambda| < 0.196 \lambda \implies
+\begin{cases}
+    -0.196\lambda < \lambda^{**} - \lambda \\ 
+    \lambda^{**} - \lambda < 0.196\lambda 
+\end{cases}
+\implies
+\begin{cases}
+    \lambda <  \frac{\lambda^{**}}{0.804} \\ 
+    \lambda > \frac{\lambda^{**}}{1.196} 
+\end{cases}
+$$
+Отримали що з ймовірністю 0.95 
+$\lambda \in \left(\frac{(\lambda^{**})_{\text{зн}}}{1.196}; \frac{(\lambda^{**})_{\text{зн}}}{0.804}\right) \implies
+\lambda \in (1.11; 1.66)$ 
+\\ \\ 
+\textbf{Довірчий інтервал параметру $\theta$:} \\
+Оскільки $f_\xi(x) = 0 $ при $x < \theta $, то $P \{ \theta \leq \min \xi_k \} = 1$ \\ 
+Звідси $P \{  \theta^*_1 - \varepsilon < \theta \leq \min \xi_k  \} = 
+P \{  \theta^*_1 - \varepsilon < \theta \} = P \{  \theta^*_1 - \theta < \varepsilon  \}$  
+\\
+При перевірці оцінки $\theta^*_1 = -\frac{\lambda}{n} + \min \xi_k$ на асимптотичну нормальність було доведено: 
+$$ 
+ \frac{\theta^*_1 - \mathbb{E} \theta^*_1}{ \sqrt{D \theta^*_1} } = 
+ \frac{n(-\frac{\lambda}{n} + \min \xi_k - \theta)}{\lambda} =
+ \uppsi, \ \ \ \ \ \uppsi \sim Exp(1, -1)
+$$ 
+Отримуємо:
+$$ 
+P \{  \theta^*_1 - \varepsilon < \theta \leq \min \xi_k  \} = 
+P \{  \theta^*_1 - \theta < \varepsilon  \} = 
+P \left\{  \frac{\theta^*_1 - \mathbb{E} \theta^*_1}{ \sqrt{D \theta^*_1} } < \frac{\varepsilon}{ \sqrt{D \theta^*_1} }   \right\}=
+P \left\{ \underbrace{ \frac{\theta^*_1 - \mathbb{E} \theta^*_1}{ \sqrt{D \theta^*_1} }}_{\sim Exp(1,-1)} < \frac{n \varepsilon}{ \lambda }   \right\}
+=0.95 \implies
+$$ 
+$$ 
+F_{\uppsi} \left(\frac{n\varepsilon}{\lambda}\right) = 0.95 \implies
+F_{\uppsi} \left(\frac{n\varepsilon}{(\lambda^{**})_{\text{зн}}}\right) \approx 0.95
+\implies
+F_{\uppsi} \left(\frac{100\varepsilon}{1.332}\right) \approx 0.95 \implies
+1-e^{-\left(\frac{100\varepsilon}{1.332} +1\right)} \approx 0.95
+\implies
+$$ 
+$$
+e^{-\left(\frac{100\varepsilon}{1.332} +1\right)} \approx 0.05 \implies
+\frac{100\varepsilon}{1.332} +1\approx \ln(\frac{1}{0.05}) \implies
+\varepsilon \approx (\ln{20} - 1)\frac{1.332}{100} \approx 0.0266
+$$
+Отже з ймовірністю 0.95 $\theta \in ((\theta^*_1)_\text{зн}-0.0266;\min x_k] \implies
+\theta \in (4.14; 4.18]$ 
+
+
+
+\begin{center}
+    \large
+    \textbf{10. Висновки}
+\end{center}
+Проаналізувавши дану конкретну реалізацію вибірки ми висунули припущення щодо
+закону розподілу ГС, знайшли найкращі точкові оцінки та, порахувавши їх приблизне значення, 
+перевірили гіпотезу за допомогою критерію значущості Пірсона. \\ 
+Ми прийшли до висновку що на заданому рівні значущості дослідні дані не суперечать гіпотезі, що 
+ГС, за якою отримано нашу реалізацію вибірки, розподілена за показниковим законом
+з параметрами $\lambda=1.332, \theta=4.167$. Також ми знайшли наближені довірчі інтервали
+з рівнем надійності 0.95 і отримали що $\lambda \in (1.11; 1.66)$, $\theta \in (4.14; 4.18]$ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{center}
+    \huge
+    \textbf{Додаток}
+    \label{sec:hello}
+\end{center}
+Експоненційний розподіл із зсувом: $\xi \sim Exp(\lambda, \theta)$ \\
+$
+f_{\xi}(x) = \begin{cases}
+    0, & x < \theta \\ 
+    \frac{1}{\lambda}e^{-\frac{1}{\lambda}(x-\theta)}, & x \ge \theta
+\end{cases}
+$
+\\
+$
+F_{\xi}(x) = \begin{cases}
+    0, & x < \theta \\ 
+    \frac{1}{\lambda}\int_{\theta}^{x}\limits e^{-\frac{1}{\lambda}(t-\theta)} \,dt , & x \ge \theta
+\end{cases}
+=
+\left\langle u = \frac{1}{\lambda}(t-\theta)\right\rangle =
+\begin{cases}
+    0, & x < \theta \\ 
+    \int_{0}^{\frac{1}{\lambda}(x-\theta)}\limits e^{-u} \,du , & x \ge \theta
+\end{cases}
+=
+\begin{cases}
+    0, & x < \theta \\ 
+    1-e^{-\frac{1}{\lambda}(x-\theta)} , & x \ge \theta
+\end{cases}
+$  
+\\ 
+$$ 
+\mathcal{L}_{Exp}(\vec{x}, \lambda, \theta) = 
+\prod_{k=1}^{n}f_{\xi}(x_k) = 
+\lambda^{-n}\cdot e^{-\frac{1}{\lambda}\sum_{k=1}^{n}(x_k - \theta)}
+$$
+$$ 
+\ln{\mathcal{L}_{Exp}(\vec{x}, \lambda, \theta)} = 
+-n \ln{\lambda} - \frac{1}{\lambda}\sum_{k=1}^{n}(x_k - \theta) = 
+-n \ln{\lambda} - \frac{1}{\lambda}\sum_{k=1}^{n}x_k + \frac{n \theta}{\lambda}
+$$ 
+\\
+Розглянемо функцію $\varphi(x) = x + \theta, \ \varphi^{-1}(y) = y - \theta$ \\ 
+Візьмемо випадкову величину $\eta \sim Exp(\lambda)$, та знайдемо випадкову
+величину $\widehat{\xi} = \varphi(\eta)$, що є функцією випадкового аргументу \\ 
+Оскільки $\varphi(x)$ -- монотонно зростаюча неперервна функція на $\mathbb{R}$,
+$\varphi^{-1}(x)$ -- диференційовна на  $\mathbb{R}$, то \\ 
+$$
+f_{\widehat{\xi}}(y) = f_{\eta}(\varphi^{-1}(y)) |(\varphi^{-1}(y))'|
+=
+\begin{cases}
+    0, & y - \theta < 0 \\ 
+    \frac{1}{\lambda}e^{-\frac{1}{\lambda}(y-\theta)}, & y - \theta \ge 0
+\end{cases}
+=
+\begin{cases}
+    0, & y < \theta  \\ 
+    \frac{1}{\lambda}e^{-\frac{1}{\lambda}(y-\theta)}, & y \ge \theta
+\end{cases}
+$$
+Можемо замітити що $f_{\widehat{\xi}}(x) = f_{\xi}(x)$, а щільність однозначно
+визначає розподіл, тому $\xi = \widehat{\xi} = \eta + \theta$ 
+\\
+Завдяки цьому знайдемо числові характеристики: \\ 
+$
+\mathbb{E}\xi = \mathbb{E} (\eta + \theta) = \mathbb{E} \eta + \mathbb{E} \theta =
+\lambda + \theta
+$ \\ 
+$
+D \xi = D (\eta + \theta) = D \eta  = \lambda^2
+$ \\ 
+$
+\mathbb{E} (\xi - \mathbb{E} \xi)^3 = \mathbb{E} (\eta + \theta - \mathbb{E} (\eta + \theta))^3 = 
+\mathbb{E} (\eta + \theta - \mathbb{E} \eta - \theta)^3 =
+\mathbb{E} (\eta - \mathbb{E} \eta)^3, D \xi = D \eta \implies As \xi = As \eta = 2
+$
+\\ 
+Оскільки щільність відмінна від нуля тільки на півосі $[\theta; +\infty)$
+при чому на ньому вона монотонно спадна, найбільшого значення щільність прийматиме
+в точці $x_{max} = \theta_0 $, отже $Mo \xi = \theta$   \\ 
+$
+F_{\xi}(x_0) = \frac{1}{2} \implies 
+\frac{1}{2} = 1-e^{-\frac{1}{\lambda}(x_0 -\theta)} \implies
+-\frac{1}{\lambda}(x_0 - \theta) = \ln{\frac{1}{2}} \implies
+x_0 = -\lambda \ln{\frac{1}{2}} + \theta \implies
+x_0 = \lambda \ln{2} + \theta \\
+$ 
+Отже $Me \xi = \lambda \ln{2} + \theta$ \\
+Знайдемо ще характеристичну функцію $\xi$:
+$$ 
+\mathlarger{\mathlarger{\chi}}_\xi(t)=
+\mathlarger{\mathlarger{\chi}}_{\eta + \theta}(t) = 
+e^{it \theta} \cdot \mathlarger{\mathlarger{\chi}}_\eta(t)
+=e^{it \theta} \cdot \frac{\frac{1}{\lambda}}{\frac{1}{\lambda}-it}
+$$
+Доведемо тепер таку властивість: $\frac{1}{\lambda} \eta \sim Exp(1)$, де 
+$\eta \sim Exp(\lambda)$:
+$$  
+\mathlarger{\mathlarger{\chi}}_{\frac{1}{\lambda}\eta}(t)= 
+\mathlarger{\mathlarger{\chi}}_{\eta}\left(\frac{1}{\lambda}t\right)=
+\frac{\frac{1}{\lambda}}{\frac{1}{\lambda}-\frac{1}{\lambda}it}=
+\frac{1}{1-it}=
+\mathlarger{\mathlarger{\chi}}_{\zeta}(t), \ \ \zeta \sim Exp(1)
+$$ 
+\end{document}
+
+
