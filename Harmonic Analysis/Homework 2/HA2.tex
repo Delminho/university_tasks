@@ -5,7 +5,11 @@
 \usepackage{geometry}
 \usepackage{amsmath}
 \usepackage{mathabx}
+\usepackage{bbm}
 \usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{adjustbox}
 \usepackage{cancel}
 \geometry{verbose,a4paper,tmargin=2cm,bmargin=2cm,lmargin=1cm,rmargin=1cm}
 \linespread{1.25}
@@ -25,7 +29,7 @@ $\mathcal{S} = \{ [a;b] : a, b \in \mathbb{R} \setminus \mathbb{Q}, a < b \}$ \\
 Бачимо, що оскільки a < b, то $\emptyset \notin \mathcal{S}$, тому $\mathcal{S}$ -- не кільце \\ 
 Розглянемо тепер $A = \left[\sqrt{2}, \sqrt{5} \right] \in \mathcal{S}, 
 \ B = \left[\sqrt{3}, \sqrt{6} \right] \in \mathcal{S}$ \\ 
-Тоді $B \setminus A = \left[\sqrt{2}; \sqrt{3}\right)$. \\
+Тоді $A \setminus B = \left[\sqrt{2}; \sqrt{3}\right)$. \\
 Очевидно, що неможливо
 підібрати таке $\bigsqcup_{k=1}^{n} 
 [a_{k}; b_{k}], a_k, b_k \in \mathbb{R} \setminus \mathbb{Q}, a_k < b_k$, 
@@ -37,5 +41,280 @@ $\mathcal{S} = \{ [a;b] : a, b \in \mathbb{R} \setminus \mathbb{Q}, a < b \}$ \\
     \Large 
     Задача 2
 \end{center}
+Побудувати кільце та $\sigma$-кільце, породжені сім'єю S підмножин множини $\Omega$ \\ 
+$S = \{ (0;\frac{1}{n}) : n \in \mathbb{N}  \}, \ \Omega = (0;1) $ 
+\\
+Розглянемо кільце 
+$R_s = \left\{ (0;\frac{1}{n}), 
+\bigcup_{i=1}^m\limits \left[\frac{1}{p_i};\frac{1}{k_i}\right), 
+(0;\frac{1}{n}) \cup  
+\bigcup_{i=1}^m\limits \left[\frac{1}{p_i};\frac{1}{k_i}\right) :
+n, p_i, k_i \in \mathbb{N}, \ k_i \leq p_i  \right\}$ \\ 
+$S \subset R_s$. Доведемо, що $R_s$ -- найменше кільце, яке містить S: \\ 
+Нехай R -- інше кільце, що містить S. Тоді: \\
+1) $\emptyset \in R$ \\
+2) $\left(0;\frac{1}{n_1}\right) \setminus \left(0;\frac{1}{n_1} \right) = \begin{cases}
+    \emptyset, & n_2 \leq n_1 \\ 
+    [\frac{1}{n_2}; \frac{1}{n_1}), & n_2 > n_1 
+\end{cases} \in R \implies \left[\frac{1}{n_2}; \frac{1}{n_1}\right) \in R, \quad n_1, n_2 \in \mathbb{N}, n_2 > n_1 $ \\ 
+3) $\bigcup_{i=1}^m\limits  \left(0;\frac{1}{n_i}\right) = \left(0; \frac{1}{n}\right) \in R$, \
+$\bigcup_{i=1}^m\limits \left[\frac{1}{p_i}; \frac{1}{k_i}\right) \in R$, \ $
+\left(\bigcup_{j=1}^v\limits \left(0;\frac{1}{n_j}\right)\right) \cup \left(\bigcup_{i=1}^m\limits \left[\frac{1}{p_i}; \frac{1}{k_i}\right)\right) = 
+(0;\frac{1}{n}) \cup \left(\bigcup_{i=1}^m\limits \left[\frac{1}{p_i}; \frac{1}{k_i}\right)\right) \in R$ 
+Отже, якщо R кільце та воно містить S, то \\ 
+$R \supset \left\{ \emptyset, (0;\frac{1}{n}), 
+\bigcup_{i=1}^m\limits \left[\frac{1}{p_i};\frac{1}{k_i}\right), 
+(0;\frac{1}{n}) \cup  
+\bigcup_{i=1}^m\limits \left[\frac{1}{p_i};\frac{1}{k_i}\right) :
+n, p_i, k_i \in \mathbb{N}, \ k_i < p_i  \right\}$ \\ 
+Оскільки $\emptyset$ можна записати як $\left[\frac{1}{p_i};\frac{1}{k_i}\right)$, $p_i=k_i$,  то $R_s \subset R$, а отже
+є кільцем, породженим сім'єю S.   \\ \\ 
+Розглянемо $\sigma$-кільце 
+$K_s = \left\{ (0;\frac{1}{n}), 
+\bigcup_{i=1}^{\infty}\limits \left[\frac{1}{p_i};\frac{1}{k_i}\right), 
+(0;\frac{1}{n}) \cup  
+\bigcup_{i=1}^{ \infty }\limits \left[\frac{1}{p_i};\frac{1}{k_i}\right) :
+n, p_i, k_i \in \mathbb{N}, \ k_i \leq p_i \ \right\}$ \\ 
+$S \subset K_s$. Доведемо, що $K_s$ -- найменше $\sigma$-кільце, яке містить S: \\
+Нехай K -- інше $\sigma$-кільце, та воно містить S. $\sigma$-кільце, що містить S 
+містить всі елементи кільця, породженого сім'єю S та замкнуте відносно зліченного об'єднання, тому \\ 
+1)$\bigcup_{k \in \mathbb{N}}\limits (0; \frac{1}{n_k}) = (0; \frac{1}{n}) \in K$ \\ 
+2)$\bigcup_{k \in \mathbb{N}}\limits \left[\frac{1}{p_i};\frac{1}{k_i}\right)\in K, k_i \leq p_i$ \\ 
+3)$(0;\frac{1}{n}) \cup \bigcup_{k \in \mathbb{N}}\limits \left[\frac{1}{p_i};\frac{1}{k_i}\right)\in K, k_i \leq p_i$ \\ 
+Отримуємо, що $K_s \subset K$, тому $K_s$ -- $\sigma$-кільце, породжене сім'єю S. 
 
+
+\begin{center}
+    \Large 
+    Задача 3
+\end{center}
+$A = (-1;1) \cap \{ x \in \mathbb{R} : \ln{(1+x)} \in \mathbb{Q} \}= \{ x \in (-1;1) : \ln{(1+x)} \in \mathbb{Q} \}$ \\ 
+Розглянемо $A_q$  = $\{ x \in (-1;1) : \ln{(1+x)} = q \}$ \\ 
+$\ln{(1+x)} = q \implies x= e^q - 1$, \ $-1 < x < 1 \implies -1 < e^q -1 < 1 \implies q < \ln2$ \\  
+Отже $A_q = \{ x \in \mathbb{R} : x = e^q-1, q \in \mathbb{Q}\setminus[\ln2; +\infty ) \}$ \\ 
+Позначимо $\mathbb{Q}_A = \mathbb{Q} \setminus [\ln2; +\infty )$ \\ 
+Оскільки $\mathbb{Q}$ -- зліченна множина, то 
+$\mathbb{Q}_A \subset \mathbb{Q}$ -- також зліченна \\ 
+$A_q$ -- одноточкова множина, тому $A_q \in \mathcal{B}$ і $\lambda(A_q) = 0$  \\ 
+$A = \bigsqcup_{q \in \mathbb{Q}_A}\limits A_q, \ A \in \mathcal{B} $,
+ оскільки $\mathcal{B} - \sigma\text{-кільце}$. \\ 
+$\lambda(A) = \lambda\left(\bigsqcup_{q \in \mathbb{Q}_A}\limits A_q\right) = 
+\sum_{q \in \mathbb{Q}_A}\limits\lambda(A_q) = \sum_{q \in \mathbb{Q}_A}\limits0 = 0$ 
+
+\begin{center}
+    \Large 
+    Задача 4
+\end{center}
+Довести, що функція $f: \mathbb{R}^2 \to \mathbb{R}$ -- вимірна. \\ 
+$f(x,y) = [x^2-y^2] \cos{\pi x y}$ \\ 
+Розглянемо функції $g_1 : \mathbb{R}^2 \to \mathbb{R}, g_2 : \mathbb{R}^2 \to \mathbb{R}, g_3: \mathbb{R}\to \mathbb{R}$: \\ 
+$g_1 (x,y) = x^2 - y^2$ -- неперервна на $\mathbb{R}^2$ , тому вимірна за теоремою. \\ 
+$g_2 (x,y) = \cos{\pi x y}$  -- неперервна на $\mathbb{R}^2$ , тому вимірна за теоремою. \\ 
+$g_3 (x) = [x]$ \\ 
+Розглянему множину $\{ f \leq a \}$ 
+
+
+	\begin{tikzpicture}[scale=1]
+        \fill[red!10] (-4, -4) -- (-4, 2.2) -- (4, 2.2) -- (4, -4);
+        \draw[thick, red] (-4, 2.2) -- (4, 2.2);
+		\draw[->] (-4,0) -- (4,0) node[below] {$x$};
+		\draw[->] (0,-4) -- (0,4) node[left] {$g_3(x)$};
+        
+        \draw[ultra thick, black] (-2, -3) -- (-2.95, -3);
+        \draw[ultra thick, black] (-1, -2) -- (-1.95, -2);
+        \draw[ultra thick, black] (0, -1) -- (-0.95, -1);
+        \draw[ultra thick, black] (0, 0) -- (0.95, 0);
+        \draw[ultra thick, black] (1, 1) -- (1.95, 1);
+        \draw[ultra thick, black] (2, 2) -- (2.95, 2);
+        \draw[ultra thick, black] (3, 3) -- (3.95, 3);
+        \draw (1.98,1) circle[radius=1.5pt];
+        \draw (2.98,2) circle[radius=1.5pt];
+        \draw (3.98,3) circle[radius=1.5pt];
+        \draw (0.98,0) circle[radius=1.5pt];
+        \fill (1,1) circle[radius=2pt];
+        \fill (2,2) circle[radius=2pt];
+        \fill (3,3) circle[radius=2pt];
+        \fill (3,3) circle[radius=2pt];
+        \fill (0,0) circle[radius=2pt];
+        \draw (0,-1) circle[radius=1.5pt];
+        \draw (-0.98,-2) circle[radius=1.5pt];
+        \draw (-1.98,-3) circle[radius=1.5pt];
+        \fill (-2,-2) circle[radius=2pt];
+        \fill (-3,-3) circle[radius=2pt];
+        \fill (-1,-1) circle[radius=2pt];
+        
+        \draw (-3.8, 2.2) node[above] {a};
+
+        \draw (3, 0) node[below] {3};
+        \draw (2, 0) node[below] {2};
+        \draw (1, 0) node[below] {1};
+        \draw (0, 2) node[left] {2};
+        \draw (0, 1) node[left] {1};
+		\draw (0, 0) node[below left] {0};
+        \draw (0, -1) node[right] {-1};
+	\end{tikzpicture} \\ 
+$\forall a \in \mathbb{R}: [x] \leq a \implies x \in (-\infty; [a] + 1) \in \mathcal{B}$
+як відкрита півпряма, отже за означенням $g_3(x)$ -- вимірна. \\
+Тоді $[x^2 - y^2] = g_3 \circ g_1 $ -- вимірна за твердженням, як композиція вимірних функцій. \\ 
+Отже $f(x,y) = [x^2-y^2] \cdot \cos{\pi x y}$ -- вимірна за теоремою, як добуток вимірних функцій. 
+\newpage
+\begin{center}
+    \Large 
+    Задача 5
+\end{center}
+$f(x) = [x] sgn(\sin{\frac{\pi}{2}x}), A=[-3,2]$ \\ \\ 
+\begin{tikzpicture}[scale=0.9]
+    \draw[->] (-3.5,0) -- (2.5,0) node[below] {$x$};
+    \draw[->] (0,-3.5) -- (0,3.5) node[left] {$f(x)$};
+
+    \draw[ultra thick, black] (-3, -3) -- (-2.05, -3);
+    \draw[ultra thick, black] (-2, 2) -- (-1.05, 2);
+    \draw[ultra thick, black] (-1, 1) -- (-0.05, 1);
+    \draw[ultra thick, black] (0, 0) -- (0.95, 0);
+    \draw[ultra thick, black] (1, 1) -- (1.95, 1);
+
+    \draw (-2.02, -3) circle[radius=1.5pt];
+    \draw (-2.02, 2) circle[radius=1.5pt];
+    \draw (-1.02, 2) circle[radius=1.5pt];
+    \draw (-0.02, 1) circle[radius=1.5pt];
+    \draw (0.98, 0) circle[radius=1.5pt];
+    \draw (1.98, 1) circle[radius=1.5pt];
+    \fill (-3,-3) circle[radius=2pt];
+    \fill (-2,0) circle[radius=2pt];
+    \fill (-1,1) circle[radius=2pt];
+    \fill (0,0) circle[radius=2pt];
+    \fill (1,1) circle[radius=2pt];
+    \fill (2,0) circle[radius=2pt];
+    \draw (2, 0) node[below] {2};
+    \draw (1, 0) node[below] {1};
+    \draw (-1, 0) node[below] {-1};
+    \draw (-2, 0) node[below] {-2};
+    \draw (0, 2) node[right] {2};
+    \draw (0, 1) node[right] {1};
+    \draw (0, 0) node[below left] {0};
+    \draw (0, -1) node[right] {-1};
+    \draw (0, -3) node[right] {-3};
+\end{tikzpicture} \qquad
+\begin{tikzpicture}[scale=0.9]
+    \draw[->] (-3.5,0) -- (2.5,0) node[below] {$x$};
+    \draw[->] (0,-3.5) -- (0,3.5) node[left] {$f^{+}(x)$};
+
+    \draw[ultra thick, black] (-3, 0) -- (-2.05, 0);
+    \draw[ultra thick, black] (-2, 2) -- (-1.05, 2);
+    \draw[ultra thick, black] (-1, 1) -- (-0.05, 1);
+    \draw[ultra thick, black] (0, 0) -- (0.95, 0);
+    \draw[ultra thick, black] (1, 1) -- (1.95, 1);
+
+    \draw (-2.02, 2) circle[radius=1.5pt];
+    \draw (-1.02, 2) circle[radius=1.5pt];
+    \draw (-0.02, 1) circle[radius=1.5pt];
+    \draw (0.98, 0) circle[radius=1.5pt];
+    \draw (1.98, 1) circle[radius=1.5pt];
+    \fill (-2,0) circle[radius=2pt];
+    \fill (-3,0) circle[radius=2pt];
+    \fill (-1,1) circle[radius=2pt];
+    \fill (0,0) circle[radius=2pt];
+    \fill (1,1) circle[radius=2pt];
+    \fill (2,0) circle[radius=2pt];
+    \draw (2, 0) node[below] {2};
+    \draw (1, 0) node[below] {1};
+    \draw (-1, 0) node[below] {-1};
+    \draw (-2, 0) node[below] {-2};
+    \draw (0, 2) node[right] {2};
+    \draw (0, 1) node[right] {1};
+    \draw (0, 0) node[below left] {0};
+    \draw (0, -1) node[right] {-1};
+    \draw (0, -3) node[right] {-3};
+\end{tikzpicture}\qquad 
+\begin{tikzpicture}[scale=0.9]
+    \draw[->] (-3.5,0) -- (2.5,0) node[below] {$x$};
+    \draw[->] (0,-3.5) -- (0,3.5) node[left] {$f^{-}(x)$};
+
+    \draw[ultra thick, black] (-3, 3) -- (-2.05, 3);
+    \draw[ultra thick, black] (-2, 0) -- (2, 0);
+    \draw (-2.02, 3) circle[radius=1.5pt];
+
+    \fill (-3,3) circle[radius=2pt];
+    \fill (-2,0) circle[radius=2pt];
+    \fill (2,0) circle[radius=2pt];
+    \draw (2, 0) node[below] {2};
+    \draw (1, 0) node[below] {1};
+    \draw (-1, 0) node[below] {-1};
+    \draw (-2, 0) node[below] {-2};
+    \draw (0, 2) node[right] {2};
+    \draw (0, 1) node[right] {1};
+    \draw (0, 0) node[below left] {0};
+    \draw (0, -1) node[right] {-1};
+    \draw (0, -3) node[right] {-3};
+\end{tikzpicture} \\
+Позначимо:
+$A_1 = [-3; -2], A_2 = (-2; -1), A_3 = [-1;0), A_4 = [0;1), A_5 = [1;2), A_6 = \{2\}$  \\ 
+$B_1 = [-3;-2), B_2 = [-2;2]$ \\ 
+Тоді: \\ 
+$f^+(x) = \begin{cases}
+    0, & x \in A_1 \cup A_4 \cup A_6 \\
+    1, & x \in A_3\cup A_5 \\ 
+    2, & x \in A_2\\ 
+\end{cases}, \quad 
+f^-(x) = \begin{cases}
+    0, & x \in B_2  \\
+    3, & x \in B_1  \\ 
+\end{cases}$ \\ 
+За означенням: 
+$$
+\int_A f^+ d \lambda = \int_{[-3;2]} f^+(x) d \lambda(x) = \sum_{k=1}^m c_k \lambda(A_k)  = 
+$$
+$$
+=0 \cdot \lambda([-3;-2]) + 2 \cdot \lambda((-2;-1)) + 
+1 \cdot \lambda([-1;0)) + 0 \cdot \lambda([0;1)) + 1 \cdot\lambda([1;2))
++ 0 \cdot \lambda(\{2\})  = 4
+$$
+$$
+\int_A f^- d \lambda = \int_{[-3;2]} f^-(x) d \lambda(x) = \sum_{k=1}^m c_k \lambda(B_k)  = 
+3 \cdot \lambda([-3;-2)) + 0 \cdot \lambda([-2;2]) = 3
+$$
+$$
+\int_A |f| d \lambda = \int_A f^+ d \lambda + \int_A f^- d \lambda = 4 + 3 = 7
+$$
+$$
+\int_A f d \lambda = \int_A f^+ d \lambda - \int_A f^- d \lambda = 4 - 3 = 1
+$$
+
+\begin{center}
+    \Large 
+    Задача 6
+\end{center}
+Знайти $\lim_{n \to \infty}\limits \int_{A} f_n(x) \,d \lambda(x)  $ \\
+$f_n(x) = e^{-x}(1+\cos^n{x}), A = \mathbb{R}_+ $ \\ 
+$$
+\lim_{n \to \infty} f_n(x) =  
+\lim_{n \to \infty} e^{-x}(1+\cos^n{x}) =  \begin{cases}
+    e^{-x}(1+0), & |\cos{x}| < 1 \\ 
+    e^{-x}(1+1), & \cos{x} = 1 \\ 
+    e^{-x}(1+(-1)^n), & \cos{x} = - 1 \\ 
+\end{cases} 
+$$
+$\tilde A = \{x \in A : \cos{x} = \pm 1\}$ -- зліченна множина, тому $\lambda(\tilde A) = 0$ \\ 
+Отже $f_n(x) \to e^{-x} \ \lambda$-майже всюди, $n \to \infty$ \\ 
+Розглянемо $\int_{\mathbb{R}_+} e^{-x} \,d \lambda(x) $: \\ 
+Нехай $g_n(x) = e^{-x} \cdot \mathbbm{1}_{[0;n]}(x)$, тоді $g_n(x) \uparrow e^{-x} \  \forall x \in \mathbb{R}$ \\ 
+Тоді за наслідком з теореми Беппо-Леві:
+$$
+\int_{\mathbb{R}_+} e^{-x} \,d \lambda(x) = 
+\lim_{n \to \infty}  \int_{\mathbb{R}_+} g_n(x) \,d \lambda(x) = 
+\lim_{n \to \infty}  \int_{\mathbb{R}_+} e^{-x} \cdot \mathbbm{1}_{[0;n]}(x)  \,d \lambda(x) = 
+$$
+$$=
+\lim_{n \to \infty}  \int_{[0;n]} e^{-x} \,d \lambda(x)
+\stackrel{(1)}{=} \lim_{n \to \infty}  \int_0^n e^{-x} \,dx =
+\lim_{n \to \infty}  (1-e^{-n}) = 1 < \infty
+$$
+Перехід (1) здійснюється за теоремою, завдяки тому, що $e^{-x}$ -- інтегровна за Ріманом. \\ 
+Отримали що $e^{-x} \in \mathcal{L}^1(\mathbb{R}_+, \lambda ) $ та $\int_{\mathbb{R}_+} e^{-x} \,d \lambda(x) = 1$ \\ 
+Використаємо теорему Лебега про обмежену збіжність: \\ 
+1) $f_n(x) \to e^{-x} \  \lambda$-майже всюди, $n \to \infty$  \\ 
+2) $\forall x \in \mathbb{R}_+ : |f_n(x)| = |e^{-x}(1+\cos^n{x})| 
+\leq |e^{-x} \cdot 2| = 2 e^{-x} = g(x), \ \ g(x) \in \mathcal{L}^1(\mathbb{R}_+, \lambda )$ \\ 
+Тому $\lim_{n \to \infty} \limits \int_{\mathbb{R}_+} f_n(x) \,d \lambda(x) = 
+\int_{\mathbb{R}_+} e^{-x} \,d \lambda(x) = 1$ 
 \end{document}
